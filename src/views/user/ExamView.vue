@@ -4,6 +4,7 @@ import { RouterLink, useRouter } from 'vue-router'
 import { CircleQuestionMark, PencilLine, Stamp, Trophy } from 'lucide-vue-next'
 import BaseCard from '@/components/shared/BaseCard.vue'
 import BaseButton from '@/components/shared/BaseButton.vue'
+import EmptyState from '@/components/shared/EmptyState.vue'
 import ExamHistoryTable from '@/components/user/ExamHistoryTable.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useLevelStore } from '@/stores/levels'
@@ -18,6 +19,7 @@ const currentLevel = computed(() => levelStore.levelById(level.value))
 const nextLevel = computed(() => levelStore.nextLevel(level.value))
 const canUpgrade = computed(() => level.value < 4)
 const questions = computed(() => examStore.questionsFor(level.value))
+const hasPaper = computed(() => questions.value.length > 0)
 const history = computed(() => (auth.currentUser ? examStore.historyFor(auth.currentUser.id) : []))
 const stats = computed(() => [
   {
@@ -98,8 +100,14 @@ function start() {
             </div>
           </div>
         </div>
-
-        <div class="mt-12 mb-7 text-center">
+        <EmptyState
+            v-if="!hasPaper"
+            class="mt-6"
+            :icon="CircleQuestionMark"
+            title="This exam has no questions yet"
+            hint="An administrator has not written the paper for this level. Nothing to sit for now — try the eLearning track and come back."
+        />
+        <div v-else class="mt-12 mb-7 text-center">
           <BaseButton class="gap-3 rounded-xl px-14 py-5 text-lg" @click="start">
             <PencilLine class="size-5" :stroke-width="2.5" />
             Start the exam
