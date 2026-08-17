@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import BaseCard from '@/components/shared/BaseCard.vue'
 import BaseButton from '@/components/shared/BaseButton.vue'
 import { SearchX } from 'lucide-vue-next'
@@ -13,6 +13,7 @@ import { useLevelStore } from '@/stores/levels'
 import { useExamStore } from '@/stores/exam'
 
 const props = defineProps<{ attemptId: string }>()
+const router = useRouter()
 const auth = useAuthStore()
 const levelStore = useLevelStore()
 const examStore = useExamStore()
@@ -49,7 +50,10 @@ const upgradedTo = computed(() => {
         <RouterLink :to="{ name: 'user-dashboard' }">
           <BaseButton as="span">Back to my passport</BaseButton>
         </RouterLink>
-        <RouterLink :to="{ name: 'user-profile-history' }">
+        <RouterLink 
+        v-if="router.hasRoute('user-profile-history')" 
+        :to="{ name: 'user-profile-history' }"
+        >
           <BaseButton as="span" variant="secondary">See my exam history</BaseButton>
         </RouterLink>
         <RouterLink v-if="level < 4" :to="{ name: 'user-elearning' }">
@@ -66,7 +70,7 @@ const upgradedTo = computed(() => {
       title="That attempt is not on record"
       hint="Exam history is kept in memory for the session, so a hard refresh clears attempts made in this sitting."
     />
-    <div class="text-center">
+    <div v-if="router.hasRoute('user-profile-history')" class="text-center">
       <RouterLink :to="{ name: 'user-profile-history' }" class="text-passport-400 text-sm font-semibold">
         Open my exam history
       </RouterLink>
