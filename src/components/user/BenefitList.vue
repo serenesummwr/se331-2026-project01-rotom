@@ -4,7 +4,6 @@ import type { Benefit } from '@/types'
 
 defineProps<{
   benefits: Benefit[]
-  /** Dims the row when it is showing a level the member has not reached yet. */
   locked?: boolean
 }>()
 </script>
