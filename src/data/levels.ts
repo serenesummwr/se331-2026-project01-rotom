@@ -7,7 +7,7 @@ export const levels: Level[] = [
     name: 'Level 1',
     tagline: 'Where every passport starts',
     description:
-      'Every member begins here right after registering. Level 1 unlocks the basics of the Service and the Level 1 eLearning track that prepares you for the first upgrade exam.',
+      'Every member begins here right after registering. Level 1 unlocks the basics of the Service and the Level 1 eLearning track that prepares you for the first exam.',
     passCriteria: 60,
     accent: 'level-1',
   },
@@ -84,7 +84,7 @@ export const services: Service[] = [
 
 export const badges: Badge[] = [
   { id: 1, levelId: 1, name: 'Level 1 Stamp', description: 'Registered and opened the CAT Passport.', icon: 'compass' },
-  { id: 2, levelId: 2, name: 'Level 2 Stamp', description: 'Passed the Level 1 upgrade exam.', icon: 'plane-takeoff' },
-  { id: 3, levelId: 3, name: 'Level 3 Stamp', description: 'Passed the Level 2 upgrade exam.', icon: 'navigation' },
-  { id: 4, levelId: 4, name: 'Level 4 Gold', description: 'Passed the Level 3 upgrade exam — the passport is complete.', icon: 'crown' },
+  { id: 2, levelId: 2, name: 'Level 2 Stamp', description: 'Passed the Level 1 exam.', icon: 'plane-takeoff' },
+  { id: 3, levelId: 3, name: 'Level 3 Stamp', description: 'Passed the Level 2 exam.', icon: 'navigation' },
+  { id: 4, levelId: 4, name: 'Level 4 Gold', description: 'Passed the Level 3 exam — the passport is complete.', icon: 'crown' },
 ]

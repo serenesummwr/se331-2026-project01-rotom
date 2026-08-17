@@ -54,7 +54,26 @@ const router = createRouter({
           component: () => import('@/views/user/ELearningView.vue'),
           meta: { title: 'eLearning', subtitle: 'The track for the level you hold' },
         },
+        {
+          path: 'exam',
+          name: 'user-exam',
+          component: () => import('@/views/user/ExamView.vue'),
+          meta: { title: 'Exam', subtitle: 'What the paper is before you sit it' },
+        },
+        {
+          path: 'exam/result/:attemptId',
+          name: 'user-exam-result',
+          component: () => import('@/views/user/ExamResultView.vue'),
+          props: true,
+          meta: { title: 'Exam result' },
+        },
       ],
+    },
+    {
+      path: '/exam/room',
+      name: 'user-exam-room',
+      component: () => import('@/views/user/ExamRoomView.vue'),
+      meta: { role: 'user', title: 'Exam room' },
     },
     {
       path: '/:pathMatch(.*)*',

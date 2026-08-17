@@ -43,7 +43,7 @@ const services = computed(() => levelStore.servicesFor(level.value))
           <BaseButton as="span" variant="secondary">Study the eLearning</BaseButton>
         </RouterLink>
          <RouterLink v-if="nextLevel && router.hasRoute('user-exam')" :to="{ name: 'user-exam' }">
-          <BaseButton as="span">Take the upgrade exam</BaseButton>
+          <BaseButton as="span">Take the exam</BaseButton>
         </RouterLink>
       </div>
     </section>

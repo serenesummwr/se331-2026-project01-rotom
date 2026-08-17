@@ -71,7 +71,7 @@ const fieldClass =
         </RouterLink>
         <h1 class="text-ink-50 text-2xl font-semibold">Open your passport</h1>
         <p class="text-ink-400 mt-1.5 text-sm">
-          Register to start at Level 1 — you can sit the upgrade exam whenever you are ready.
+          Register to start at Level 1 — you can sit the exam whenever you are ready.
         </p>
         <form class="mt-8 space-y-5" novalidate @submit.prevent="submit">
           <div class="grid gap-4 sm:grid-cols-2">

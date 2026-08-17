@@ -20,7 +20,7 @@ export const questions: Question[] = [
     question: 'How does a member move from one level to the next?',
     choices: [
       'By staying registered for six months',
-      'By passing the upgrade exam for their current level',
+      'By passing the exam for their current level',
       'By inviting three other members',
       'By asking an administrator directly',
     ],
