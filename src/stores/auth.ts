@@ -31,7 +31,7 @@ export const useAuthStore = defineStore('auth', () => {
     if (currentUserId.value === null) sessionStorage.removeItem(STORAGE_KEY)
     else sessionStorage.setItem(STORAGE_KEY, String(currentUserId.value))
   }
- 
+
   function restore() {
     if (typeof sessionStorage === 'undefined') return
     const stored = sessionStorage.getItem(STORAGE_KEY)

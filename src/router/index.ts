@@ -4,7 +4,6 @@ import LandingView from '@/views/LandingView.vue'
 import { useAuthStore } from '@/stores/auth'
 import type { Role } from '@/types'
 
-
 NProgress.configure({ showSpinner: false })
 
 declare module 'vue-router' {
@@ -25,7 +24,7 @@ const router = createRouter({
       component: LandingView,
       meta: { public: true },
     },
-       {
+    {
       path: '/login',
       name: 'login',
       component: () => import('@/views/LoginView.vue'),
@@ -37,6 +36,46 @@ const router = createRouter({
       component: () => import('@/views/RegisterView.vue'),
       meta: { public: true, title: 'Register' },
     },
+
+    {
+      path: '/admin',
+      component: () => import('@/layouts/AdminLayout.vue'),
+      meta: { role: 'admin' },
+      children: [
+        {
+          path: '',
+          name: 'admin-dashboard',
+          component: () => import('@/views/admin/AdminDashboardView.vue'),
+          meta: { title: 'Overview', subtitle: 'The passport at a glance' },
+        },
+        {
+          path: 'users',
+          name: 'admin-users',
+          component: () => import('@/views/admin/AdminUserListView.vue'),
+          meta: { title: 'Member directory', subtitle: 'Search, filter and page the members' },
+        },
+        {
+          path: 'users/:id',
+          component: () => import('@/views/admin/AdminUserDetailView.vue'),
+          props: true,
+          children: [
+            {
+              path: '',
+              name: 'admin-user-info',
+              component: () => import('@/views/admin/AdminUserInfoView.vue'),
+              meta: { title: 'Member detail' },
+            },
+            {
+              path: 'edit',
+              name: 'admin-user-edit',
+              component: () => import('@/views/admin/AdminUserEditView.vue'),
+              meta: { title: 'Member detail' },
+            },
+          ],
+        },
+      ],
+    },
+
     {
       path: '/app',
       component: () => import('@/layouts/UserLayout.vue'),
@@ -47,7 +86,8 @@ const router = createRouter({
           name: 'user-dashboard',
           component: () => import('@/views/user/UserDashboardView.vue'),
           meta: { title: 'My passport', subtitle: 'Your level and what it unlocks' },
-        },{
+        },
+        {
           path: 'profile',
           component: () => import('@/views/user/UserProfileView.vue'),
           children: [

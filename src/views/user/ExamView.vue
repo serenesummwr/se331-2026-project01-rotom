@@ -18,9 +18,7 @@ const currentLevel = computed(() => levelStore.levelById(level.value))
 const nextLevel = computed(() => levelStore.nextLevel(level.value))
 const canUpgrade = computed(() => level.value < 4)
 const questions = computed(() => examStore.questionsFor(level.value))
-const history = computed(() =>
-  auth.currentUser ? examStore.historyFor(auth.currentUser.id) : [],
-)
+const history = computed(() => (auth.currentUser ? examStore.historyFor(auth.currentUser.id) : []))
 const stats = computed(() => [
   {
     icon: CircleQuestionMark,
@@ -69,8 +67,8 @@ function start() {
             questions.length === 1 ? '' : 's'
           }}, and you must answer every one of them before it can be submitted. Score
           {{ currentLevel.passCriteria }}% or more and your level changes on the spot; score less
-          and nothing about your passport changes. Either way the attempt is recorded with its
-          score and the time you sat it.
+          and nothing about your passport changes. Either way the attempt is recorded with its score
+          and the time you sat it.
         </p>
         <p class="text-ink-300 mt-3 text-sm leading-relaxed">
           There is no time limit and no cap on attempts, and the eLearning track is not a

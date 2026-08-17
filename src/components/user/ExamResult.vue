@@ -22,11 +22,7 @@ const when = computed(() =>
 <template>
   <div
     class="rounded-2xl border p-6 sm:p-8"
-    :class="
-      attempt.passed
-        ? 'border-success/40 bg-success/5'
-        : 'border-danger/40 bg-danger/5'
-    "
+    :class="attempt.passed ? 'border-success/40 bg-success/5' : 'border-danger/40 bg-danger/5'"
   >
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
@@ -44,12 +40,7 @@ const when = computed(() =>
           Level {{ attempt.levelId }} exam · pass criteria {{ passCriteria }}%
         </p>
       </div>
-      <LevelBadge
-        v-if="upgradedTo"
-        :level="upgradedTo.id"
-        :name="upgradedTo.name"
-        size="lg"
-      />
+      <LevelBadge v-if="upgradedTo" :level="upgradedTo.id" :name="upgradedTo.name" size="lg" />
     </div>
     <div class="mt-6">
       <div class="bg-ink-600 relative h-2.5 overflow-hidden rounded-full">

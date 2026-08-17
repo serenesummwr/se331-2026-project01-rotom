@@ -3,7 +3,6 @@ import { RouterLink } from 'vue-router'
 import BaseButton from '@/components/shared/BaseButton.vue'
 </script>
 <template>
-
   <div class="flex h-dvh flex-col overflow-hidden">
     <header
       class="mx-auto flex w-full max-w-6xl shrink-0 items-center justify-between px-6 py-5 sm:py-6"
@@ -24,7 +23,9 @@ import BaseButton from '@/components/shared/BaseButton.vue'
           <p class="text-passport-400 text-xs font-semibold tracking-[0.2em] uppercase">
             Learn · Pass · Level up
           </p>
-          <h1 class="text-ink-50 mt-3 text-3xl leading-tight font-bold sm:text-4xl lg:mt-4 lg:text-5xl">
+          <h1
+            class="text-ink-50 mt-3 text-3xl leading-tight font-bold sm:text-4xl lg:mt-4 lg:text-5xl"
+          >
             Ready to move up?
           </h1>
           <p class="text-ink-300 mt-4 max-w-xl text-base leading-relaxed sm:text-lg lg:mt-6">

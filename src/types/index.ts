@@ -109,12 +109,13 @@ export interface NavItem {
   label: string
   icon: Component
   to: { name: string }
-    exact?: boolean
+  exact?: boolean
 }
 export interface ProfileLink {
   label: string
   to: { name: string }
 }
+export type ProfileTab = ProfileLink & { params?: Record<string, string> }
 export interface UserFilterState {
   name: string
   level: LevelId | 'all'

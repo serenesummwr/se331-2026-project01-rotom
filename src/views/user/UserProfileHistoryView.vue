@@ -7,9 +7,7 @@ import { useExamStore } from '@/stores/exam'
 
 const auth = useAuthStore()
 const examStore = useExamStore()
-const attempts = computed(() =>
-  auth.currentUser ? examStore.historyFor(auth.currentUser.id) : [],
-)
+const attempts = computed(() => (auth.currentUser ? examStore.historyFor(auth.currentUser.id) : []))
 const passed = computed(() => attempts.value.filter((attempt) => attempt.passed).length)
 </script>
 <template>

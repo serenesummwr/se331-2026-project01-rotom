@@ -45,9 +45,7 @@ const fieldClass =
         <span class="text-ink-50 text-lg font-semibold">CAT Passport</span>
       </RouterLink>
       <div>
-        <h2 class="text-ink-50 max-w-md text-3xl leading-snug font-semibold">
-          Welcome back.
-        </h2>
+        <h2 class="text-ink-50 max-w-md text-3xl leading-snug font-semibold">Welcome back.</h2>
         <p class="text-ink-400 mt-4 max-w-md text-sm leading-relaxed">
           Sign in to continue learning, check your progress, or take your next exam.
         </p>

@@ -35,13 +35,13 @@ const upgradedTo = computed(() => {
       :upgraded-to="upgradedTo"
     />
     <div v-if="currentLevel" class="grid gap-5 lg:grid-cols-2">
-      <BaseCard
-        title="Your benefits now"
-        :subtitle="currentLevel.name"
-      >
+      <BaseCard title="Your benefits now" :subtitle="currentLevel.name">
         <BenefitList :benefits="levelStore.benefitsFor(level)" />
       </BaseCard>
-      <BaseCard title="Your services now" :subtitle="`${levelStore.servicesFor(level).length} unlocked`">
+      <BaseCard
+        title="Your services now"
+        :subtitle="`${levelStore.servicesFor(level).length} unlocked`"
+      >
         <ServiceList :services="levelStore.servicesFor(level)" />
       </BaseCard>
     </div>
@@ -50,9 +50,9 @@ const upgradedTo = computed(() => {
         <RouterLink :to="{ name: 'user-dashboard' }">
           <BaseButton as="span">Back to my passport</BaseButton>
         </RouterLink>
-        <RouterLink 
-        v-if="router.hasRoute('user-profile-history')" 
-        :to="{ name: 'user-profile-history' }"
+        <RouterLink
+          v-if="router.hasRoute('user-profile-history')"
+          :to="{ name: 'user-profile-history' }"
         >
           <BaseButton as="span" variant="secondary">See my exam history</BaseButton>
         </RouterLink>
@@ -71,7 +71,10 @@ const upgradedTo = computed(() => {
       hint="Exam history is kept in memory for the session, so a hard refresh clears attempts made in this sitting."
     />
     <div v-if="router.hasRoute('user-profile-history')" class="text-center">
-      <RouterLink :to="{ name: 'user-profile-history' }" class="text-passport-400 text-sm font-semibold">
+      <RouterLink
+        :to="{ name: 'user-profile-history' }"
+        class="text-passport-400 text-sm font-semibold"
+      >
         Open my exam history
       </RouterLink>
     </div>

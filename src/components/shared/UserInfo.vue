@@ -46,7 +46,10 @@ const rows = computed(() => [
       </div>
       <div v-if="showStatus">
         <dt class="text-ink-400 text-xs tracking-wide uppercase">Account status</dt>
-        <dd class="mt-1 text-sm font-semibold" :class="user.active ? 'text-success' : 'text-danger'">
+        <dd
+          class="mt-1 text-sm font-semibold"
+          :class="user.active ? 'text-success' : 'text-danger'"
+        >
           {{ user.active ? 'Active' : 'Deactivated' }}
         </dd>
       </div>

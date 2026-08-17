@@ -9,10 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <EmptyState
-    v-if="benefits.length === 0"
-    title="No benefits listed for this level"
-  />
+  <EmptyState v-if="benefits.length === 0" title="No benefits listed for this level" />
   <ul v-else class="divide-ink-700/70 -my-3 divide-y">
     <li
       v-for="benefit in benefits"
