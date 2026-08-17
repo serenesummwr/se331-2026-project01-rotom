@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import type { ProfileLink } from '@/types'
+import type { ProfileTab } from '@/types'
 
 defineProps<{
-  tabs: (ProfileLink & { params?: Record<string, string> })[]
+  tabs: ProfileTab[]
 }>()
 </script>
 <template>

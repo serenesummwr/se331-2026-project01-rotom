@@ -115,6 +115,7 @@ export interface ProfileLink {
   label: string
   to: { name: string }
 }
+export type ProfileTab = ProfileLink & { params?: Record<string, string> }
 export interface UserFilterState {
   name: string
   level: LevelId | 'all'
