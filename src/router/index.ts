@@ -37,6 +37,19 @@ const router = createRouter({
       meta: { public: true, title: 'Register' },
     },
     {
+      path: '/app',
+      component: () => import('@/layouts/UserLayout.vue'),
+      meta: { role: 'user' },
+      children: [
+        {
+          path: '',
+          name: 'user-dashboard',
+          component: () => import('@/views/user/UserDashboardView.vue'),
+          meta: { title: 'My passport', subtitle: 'Your level and what it unlocks' },
+        },
+      ],
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/views/NotFoundView.vue'),
