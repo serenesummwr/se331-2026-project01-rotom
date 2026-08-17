@@ -14,6 +14,7 @@ const levelStore = useLevelStore()
 const user = computed(() => userStore.byId(Number(props.id)))
 const tabs = computed(() => [
   { label: 'Information', to: { name: 'admin-user-info' }, params: { id: props.id } },
+    { label: 'Level & history', to: { name: 'admin-user-level' }, params: { id: props.id } },
   { label: 'Edit', to: { name: 'admin-user-edit' }, params: { id: props.id } },
 ])
 </script>

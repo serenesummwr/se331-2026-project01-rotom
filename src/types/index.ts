@@ -116,6 +116,7 @@ export interface ProfileLink {
   to: { name: string }
 }
 export type ProfileTab = ProfileLink & { params?: Record<string, string> }
+export type LevelEditable = Pick<Level, 'name' | 'tagline' | 'description' | 'passCriteria'>
 export interface UserFilterState {
   name: string
   level: LevelId | 'all'
