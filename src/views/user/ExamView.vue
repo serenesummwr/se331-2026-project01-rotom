@@ -62,20 +62,34 @@ function start() {
           {{ currentLevel.name }} → {{ nextLevel?.name }}
         </h2>
         <p class="text-ink-400 mt-6 text-xs tracking-wide uppercase">Instructions</p>
-        <p class="text-ink-300 mt-2 text-sm leading-relaxed">
-          This paper decides whether your passport moves up to
-          <strong class="text-ink-100">{{ nextLevel?.name }}</strong
-          >. It is {{ questions.length }} multiple-choice question{{
-            questions.length === 1 ? '' : 's'
-          }}, and you must answer every one of them before it can be submitted. Score
-          {{ currentLevel.passCriteria }}% or more and your level changes on the spot; score less
-          and nothing about your passport changes. Either way the attempt is recorded with its score
-          and the time you sat it.
-        </p>
-        <p class="text-ink-300 mt-3 text-sm leading-relaxed">
-          There is no time limit and no cap on attempts, and the eLearning track is not a
-          prerequisite — you may sit this exam without watching any of it.
-        </p>
+        <ul class="text-ink-300 mt-2 space-y-1.5 text-sm leading-relaxed">
+          <li class="flex gap-2.5">
+            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span>
+              {{ questions.length }} multiple-choice question{{
+                questions.length === 1 ? '' : 's'
+              }}
+              — all must be answered before submitting
+            </span>
+          </li>
+          <li class="flex gap-2.5">
+            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span>
+              Score {{ currentLevel.passCriteria }}% or higher to move up to
+              <strong class="text-ink-100">{{ nextLevel?.name }}</strong> immediately
+            </span>
+          </li>
+          <li class="flex gap-2.5">
+            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span>Below {{ currentLevel.passCriteria }}%: your passport stays unchanged</span>
+          </li>
+          <li class="flex gap-2.5">
+            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span>
+              No time limit, no cap on attempts, and the eLearning track is not a prerequisite
+            </span>
+          </li>
+        </ul>
         <p class="text-ink-400 mt-6 text-xs tracking-wide uppercase">Track</p>
         <p class="text-ink-300 mt-2 text-sm">
           {{ currentLevel.name }} —
