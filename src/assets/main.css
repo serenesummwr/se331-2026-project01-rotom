@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+:root {
+  color-scheme: light;
+  --ink-950: #fcfcfb; 
+  --ink-900: #f2f1ee; 
+  --ink-800: #ffffff; 
+  --ink-700: #e5e3de; 
+  --ink-600: #d5d2cb; 
+  --ink-500: #8f8c82; 
+  --ink-400: #78756c; 
+  --ink-300: #5c5a53; 
+  --ink-200: #403e39; 
+  --ink-100: #2a2926; 
+  --ink-50: #141413; 
+  --passport-300: #b8664a; 
+  --passport-400: #cc785c; 
+  --passport-500: #b05a38;
+  --passport-600: #964a2e;
+  --success: #4f7a4f;
+  --danger: #b4463c;
+  --accent-fg: #141413;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink-950: #141413;
+    --ink-900: #1f1e1d;
+    --ink-800: #262624;
+    --ink-700: #353431;
+    --ink-600: #4a4945;
+    --ink-500: #7c7a73;
+    --ink-400: #9a978f;
+    --ink-300: #b8b5ad;
+    --ink-200: #d6d3cb;
+    --ink-100: #edebe4;
+    --ink-50: #fafaf7;
+    --passport-300: #e8916f;
+    --passport-400: #d97757;
+    --passport-500: #c4633f;
+    --passport-600: #a8502f;
+    --success: #6fa76f;
+    --danger: #d97066;
+  }
+}
+@theme {
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-ink-600: var(--ink-600);
+  --color-ink-500: var(--ink-500);
+  --color-ink-400: var(--ink-400);
+  --color-ink-300: var(--ink-300);
+  --color-ink-200: var(--ink-200);
+  --color-ink-100: var(--ink-100);
+  --color-ink-50: var(--ink-50);
+  --color-passport-300: var(--passport-300);
+  --color-passport-400: var(--passport-400);
+  --color-passport-500: var(--passport-500);
+  --color-passport-600: var(--passport-600);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-accent-fg: var(--accent-fg);
+  --font-display: 'Outfit Variable', 'Outfit', 'Avenir Next', 'Segoe UI', sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-ink-950 text-ink-100 antialiased;
+  font-family: var(--font-display);
+}
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-passport-400;
+}
+#nprogress .bar {
+  background: var(--passport-400);
+  height: 2px;
+}
+#nprogress .peg {
+  display: none;
+}
+.stamp-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--ink-50) 8%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
