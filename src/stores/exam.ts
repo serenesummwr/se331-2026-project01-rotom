@@ -5,7 +5,7 @@ import { elearning } from '@/data/elearning'
 import { examHistory } from '@/data/examHistory'
 import { useLevelStore } from './levels'
 import { useUserStore } from './users'
-import type { ELearningItem, ExamAttempt, LevelId, Question } from '@/types'
+import type { ELearningItem, ExamAttempt, LevelId, Question, QuestionDraft } from '@/types'
 export type ExamQuestionView = Pick<Question, 'id' | 'question' | 'choices'>
 export interface ExamOutcome {
   attempt: ExamAttempt
@@ -94,6 +94,22 @@ export const useExamStore = defineStore('exam', () => {
     answers.value = {}
     return outcome
   }
+    function nextQuestionId(): number {
+    return Math.max(0, ...questions.value.map((question) => question.id)) + 1
+  }
+  function addQuestion(levelId: LevelId, draft: QuestionDraft): Question {
+    const question: Question = { id: nextQuestionId(), levelId, ...draft }
+    questions.value = [...questions.value, question]
+    return question
+  }
+  function updateQuestion(id: number, draft: QuestionDraft) {
+    const index = questions.value.findIndex((question) => question.id === id)
+    if (index === -1) return
+    questions.value[index] = { ...questions.value[index]!, ...draft }
+  }
+  function removeQuestion(id: number) {
+    questions.value = questions.value.filter((question) => question.id !== id)
+  }
   return {
     questions,
     lessons,
@@ -112,5 +128,9 @@ export const useExamStore = defineStore('exam', () => {
     answerQuestion,
     resetExam,
     submitExam,
+    addQuestion,
+    updateQuestion,
+    removeQuestion,
+
   }
 })

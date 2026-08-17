@@ -115,6 +115,8 @@ export interface ProfileLink {
   label: string
   to: { name: string }
 }
+
+export type QuestionDraft = Pick<Question, 'question' | 'choices' | 'answerIndex'>
 export type ProfileTab = ProfileLink & { params?: Record<string, string> }
 export type LevelEditable = Pick<Level, 'name' | 'tagline' | 'description' | 'passCriteria'>
 export interface UserFilterState {
