@@ -47,6 +47,35 @@ const router = createRouter({
           name: 'user-dashboard',
           component: () => import('@/views/user/UserDashboardView.vue'),
           meta: { title: 'My passport', subtitle: 'Your level and what it unlocks' },
+        },{
+          path: 'profile',
+          component: () => import('@/views/user/UserProfileView.vue'),
+          children: [
+            {
+              path: '',
+              name: 'user-profile-details',
+              component: () => import('@/views/user/UserProfileDetailsView.vue'),
+              meta: { title: 'Profile' },
+            },
+            {
+              path: 'history',
+              name: 'user-profile-history',
+              component: () => import('@/views/user/UserProfileHistoryView.vue'),
+              meta: { title: 'Profile' },
+            },
+            {
+              path: 'badges',
+              name: 'user-profile-badges',
+              component: () => import('@/views/user/UserProfileBadgesView.vue'),
+              meta: { title: 'Profile' },
+            },
+            {
+              path: 'services',
+              name: 'user-profile-services',
+              component: () => import('@/views/user/UserProfileServicesView.vue'),
+              meta: { title: 'Profile' },
+            },
+          ],
         },
         {
           path: 'elearning',
