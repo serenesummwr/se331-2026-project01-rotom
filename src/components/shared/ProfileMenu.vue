@@ -10,7 +10,6 @@ defineProps<{
   levelName: string
   links: ProfileLink[]
 }>()
-
 const emit = defineEmits<{ logout: [] }>()
 const open = ref(false)
 const root = ref<HTMLElement | null>(null)

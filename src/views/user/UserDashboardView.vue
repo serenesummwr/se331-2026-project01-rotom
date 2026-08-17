@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
+  import { RouterLink, useRouter } from 'vue-router'
 import BaseCard from '@/components/shared/BaseCard.vue'
 import BaseButton from '@/components/shared/BaseButton.vue'
 import LevelBadge from '@/components/shared/LevelBadge.vue'
@@ -9,6 +9,7 @@ import ServiceList from '@/components/user/ServiceList.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useLevelStore } from '@/stores/levels'
 
+const router = useRouter()
 const auth = useAuthStore()
 const levelStore = useLevelStore()
 const level = computed(() => auth.currentUser?.level ?? 1)
@@ -38,10 +39,10 @@ const services = computed(() => levelStore.servicesFor(level.value))
         {{ currentLevel.description }}
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
-        <RouterLink :to="{ name: 'user-elearning' }">
-          <BaseButton as="span" variant="secondary">Study the eLearning</BaseButton> 
-       </RouterLink>
-        <RouterLink v-if="nextLevel" :to="{ name: 'user-exam' }">
+        <RouterLink v-if="router.hasRoute('user-elearning')" :to="{ name: 'user-elearning' }">
+          <BaseButton as="span" variant="secondary">Study the eLearning</BaseButton>
+        </RouterLink>
+         <RouterLink v-if="nextLevel && router.hasRoute('user-exam')" :to="{ name: 'user-exam' }">
           <BaseButton as="span">Take the upgrade exam</BaseButton>
         </RouterLink>
       </div>
