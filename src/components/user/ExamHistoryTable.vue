@@ -23,7 +23,11 @@ function formatWhen(iso: string) {
     hint="Attempts appear here as soon as an exam is submitted."
   />
   <ul v-else class="divide-ink-700 -my-3 divide-y">
-    <li v-for="attempt in attempts" :key="attempt.id" class="flex flex-wrap items-center gap-3 py-3">
+    <li
+      v-for="attempt in attempts"
+      :key="attempt.id"
+      class="flex flex-wrap items-center gap-3 py-3"
+    >
       <LevelBadge :level="attempt.levelId" size="sm" />
       <span class="min-w-0 flex-1">
         <span class="text-ink-100 block text-sm font-medium">

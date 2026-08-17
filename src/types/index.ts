@@ -109,7 +109,7 @@ export interface NavItem {
   label: string
   icon: Component
   to: { name: string }
-    exact?: boolean
+  exact?: boolean
 }
 export interface ProfileLink {
   label: string

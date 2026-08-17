@@ -151,7 +151,11 @@ const fieldClass =
                 Province
               </span>
               <select v-model="form.province" :class="fieldClass">
-                <option v-for="province in userStore.provinceOptions" :key="province" :value="province">
+                <option
+                  v-for="province in userStore.provinceOptions"
+                  :key="province"
+                  :value="province"
+                >
                   {{ province }}
                 </option>
               </select>

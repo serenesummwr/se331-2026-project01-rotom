@@ -60,7 +60,7 @@ export const useExamStore = defineStore('exam', () => {
     activeLevel.value = null
     answers.value = {}
   }
- 
+
   function submitExam(userId: number): ExamOutcome | null {
     if (activeLevel.value === null || !isComplete.value) return null
     const levelId = activeLevel.value
@@ -86,7 +86,7 @@ export const useExamStore = defineStore('exam', () => {
     const upgradedTo = passed ? userStore.upgradeLevel(userId) : null
     const outcome: ExamOutcome = {
       attempt,
-      levelAfter: upgradedTo ?? (userStore.byId(userId)?.level ?? levelId),
+      levelAfter: upgradedTo ?? userStore.byId(userId)?.level ?? levelId,
       upgraded: upgradedTo !== null,
     }
     lastOutcome.value = outcome

@@ -62,7 +62,12 @@ export const questions: Question[] = [
     id: 201,
     levelId: 2,
     question: 'A Level 2 member wants to process 400 records in one go. Which service covers that?',
-    choices: ['Service Basic Lookup', 'Service Bulk Lookup', 'Service Automations', 'Service Unlimited'],
+    choices: [
+      'Service Basic Lookup',
+      'Service Bulk Lookup',
+      'Service Automations',
+      'Service Unlimited',
+    ],
     answerIndex: 1,
   },
   {
@@ -120,7 +125,12 @@ export const questions: Question[] = [
     id: 302,
     levelId: 3,
     question: 'Service Automations are triggered by…',
-    choices: ['A monthly schedule only', 'Your own webhooks', 'A support ticket', 'The admin console'],
+    choices: [
+      'A monthly schedule only',
+      'Your own webhooks',
+      'A support ticket',
+      'The admin console',
+    ],
     answerIndex: 1,
   },
   {

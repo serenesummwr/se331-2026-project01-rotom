@@ -22,7 +22,10 @@ const subtitle = computed(() => route.meta.subtitle as string | undefined)
 const levelName = computed(() =>
   auth.currentUser ? levelStore.levelName(auth.currentUser.level) : '',
 )
-watch(() => route.fullPath, () => (navOpen.value = false))
+watch(
+  () => route.fullPath,
+  () => (navOpen.value = false),
+)
 function logout() {
   auth.logout()
   router.push({ name: 'landing' })

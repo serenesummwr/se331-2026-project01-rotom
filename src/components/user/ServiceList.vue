@@ -9,7 +9,11 @@ defineProps<{
 }>()
 </script>
 <template>
-  <EmptyState v-if="services.length === 0" :icon="Wrench" title="No services listed for this level" />
+  <EmptyState
+    v-if="services.length === 0"
+    :icon="Wrench"
+    title="No services listed for this level"
+  />
   <ul v-else class="divide-ink-700/70 -my-3 divide-y">
     <li
       v-for="service in services"
