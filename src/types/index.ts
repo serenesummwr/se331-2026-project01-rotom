@@ -63,6 +63,34 @@ export interface Level {
   passCriteria: number
   accent: string
 }
+
+export interface Question {
+  id: number
+  levelId: LevelId
+  question: string
+  choices: string[]
+  /** Index into `choices`. Never sent to the exam UI while answering. */
+  answerIndex: number
+}
+export interface ELearningItem {
+  id: number
+  levelId: LevelId
+  title: string
+  description: string
+  videoUrl: string
+  duration: string
+}
+export interface ExamAttempt {
+  id: number
+  userId: number
+  levelId: LevelId
+  score: number
+  total: number
+  passed: boolean
+  /** ISO timestamp of the moment the attempt was submitted. */
+  attemptedAt: string
+}
+
 export interface Badge {
   id: number
   levelId: LevelId

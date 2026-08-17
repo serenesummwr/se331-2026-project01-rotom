@@ -4,6 +4,7 @@ import LandingView from '@/views/LandingView.vue'
 import { useAuthStore } from '@/stores/auth'
 import type { Role } from '@/types'
 
+
 NProgress.configure({ showSpinner: false })
 
 declare module 'vue-router' {
@@ -46,6 +47,12 @@ const router = createRouter({
           name: 'user-dashboard',
           component: () => import('@/views/user/UserDashboardView.vue'),
           meta: { title: 'My passport', subtitle: 'Your level and what it unlocks' },
+        },
+        {
+          path: 'elearning',
+          name: 'user-elearning',
+          component: () => import('@/views/user/ELearningView.vue'),
+          meta: { title: 'eLearning', subtitle: 'The track for the level you hold' },
         },
       ],
     },
