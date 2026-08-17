@@ -4,8 +4,9 @@ import { RouterLink } from 'vue-router'
 import BaseCard from '@/components/shared/BaseCard.vue'
 import BaseButton from '@/components/shared/BaseButton.vue'
 import LevelBadge from '@/components/shared/LevelBadge.vue'
-import { ArrowLeft, Check, CircleQuestionMark, Layers } from 'lucide-vue-next'
+import { ArrowLeft, Layers } from 'lucide-vue-next'
 import EmptyState from '@/components/shared/EmptyState.vue'
+import QuestionList from '@/components/admin/QuestionList.vue'
 import BenefitList from '@/components/user/BenefitList.vue'
 import ServiceList from '@/components/user/ServiceList.vue'
 import { useLevelStore } from '@/stores/levels'
@@ -73,41 +74,7 @@ const isFinal = computed(() => levelId.value === 4)
           : `${questions.length} questions · a member must score ${level.passCriteria}% to reach the next level`
       "
     >
-      <EmptyState
-        v-if="questions.length === 0"
-        :icon="CircleQuestionMark"
-        title="No questions for this level"
-      />
-      <ol v-else class="space-y-4">
-        <li
-          v-for="(question, index) in questions"
-          :key="question.id"
-          class="border-ink-700/70 bg-ink-900/40 rounded-xl border p-4"
-        >
-          <p class="text-ink-100 text-sm font-medium">
-            <span class="text-passport-400 me-1.5">{{ index + 1 }}.</span>
-            {{ question.question }}
-          </p>
-          <ul class="mt-3 space-y-1.5">
-            <li
-              v-for="(choice, choiceIndex) in question.choices"
-              :key="choiceIndex"
-              class="flex items-start gap-2 text-xs"
-              :class="choiceIndex === question.answerIndex ? 'text-success' : 'text-ink-400'"
-            >
-              <span class="grid w-4 shrink-0 place-items-center pt-0.5">
-                <Check
-                  v-if="choiceIndex === question.answerIndex"
-                  class="size-3.5"
-                  :stroke-width="2.5"
-                />
-                <span v-else class="bg-ink-600 size-1 rounded-full" />
-              </span>
-              <span>{{ choice }}</span>
-            </li>
-          </ul>
-        </li>
-      </ol>
+      <QuestionList :questions="questions" />
     </BaseCard>
   </div>
   <BaseCard v-else>
