@@ -1,8 +1,5 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { questions as seedQuestions } from '@/data/questions'
-import { elearning } from '@/data/elearning'
-import { examHistory } from '@/data/examHistory'
 import { useLevelStore } from './levels'
 import { useUserStore } from './users'
 import type { ELearningItem, ExamAttempt, LevelId, Question, QuestionDraft } from '@/types'
@@ -14,9 +11,9 @@ export interface ExamOutcome {
 }
 
 export const useExamStore = defineStore('exam', () => {
-  const questions = ref<Question[]>([...seedQuestions])
-  const lessons = ref<ELearningItem[]>([...elearning])
-  const attempts = ref<ExamAttempt[]>([...examHistory])
+  const questions = ref<Question[]>([])
+  const lessons = ref<ELearningItem[]>([])
+  const attempts = ref<ExamAttempt[]>([])
   const answers = ref<Record<number, number>>({})
   const activeLevel = ref<LevelId | null>(null)
   const lastOutcome = ref<ExamOutcome | null>(null)
@@ -61,6 +58,21 @@ export const useExamStore = defineStore('exam', () => {
     answers.value = {}
   }
 
+  function hydrate(database: {
+    questions: Question[]
+    elearning: ELearningItem[]
+    examHistory: ExamAttempt[]
+  }) {
+    questions.value = database.questions.map((question) => ({
+      ...question,
+      choices: [...question.choices],
+    }))
+    lessons.value = database.elearning.map((lesson) => ({ ...lesson }))
+    attempts.value = database.examHistory.map((attempt) => ({ ...attempt }))
+    resetExam()
+    lastOutcome.value = null
+  }
+
   function submitExam(userId: number): ExamOutcome | null {
     if (activeLevel.value === null || !isComplete.value) return null
     const levelId = activeLevel.value
@@ -94,7 +106,7 @@ export const useExamStore = defineStore('exam', () => {
     answers.value = {}
     return outcome
   }
-    function nextQuestionId(): number {
+  function nextQuestionId(): number {
     return Math.max(0, ...questions.value.map((question) => question.id)) + 1
   }
   function addQuestion(levelId: LevelId, draft: QuestionDraft): Question {
@@ -124,6 +136,7 @@ export const useExamStore = defineStore('exam', () => {
     activeQuestions,
     answeredCount,
     isComplete,
+    hydrate,
     startExam,
     answerQuestion,
     resetExam,
@@ -131,6 +144,5 @@ export const useExamStore = defineStore('exam', () => {
     addQuestion,
     updateQuestion,
     removeQuestion,
-
   }
 })
