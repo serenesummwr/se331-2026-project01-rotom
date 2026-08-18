@@ -26,12 +26,14 @@ const nameClass = computed(() => (props.size === 'lg' ? 'text-xl' : 'text-lg'))
       <img
         :src="user.avatar"
         :alt="fullName"
-        class="ring-passport-400/40 bg-ink-700 rounded-2xl object-cover ring-2"
+        class="ring-primary/40 bg-border rounded-2xl object-cover ring-2"
         :class="avatarClass"
       />
       <div class="min-w-0 flex-1">
-        <h2 class="text-ink-50 truncate font-semibold" :class="nameClass">{{ fullName }}</h2>
-        <p class="text-ink-500 truncate text-sm">@{{ user.username }} · {{ user.province }}</p>
+        <h2 class="text-foreground truncate font-semibold" :class="nameClass">{{ fullName }}</h2>
+        <p class="text-muted-foreground truncate text-sm">
+          @{{ user.username }} · {{ user.province }}
+        </p>
       </div>
       <div class="flex items-center gap-2">
         <LevelBadge :level="user.level" :name="levelName" :size="size" />

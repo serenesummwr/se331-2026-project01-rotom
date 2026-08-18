@@ -21,21 +21,21 @@ const services = computed(() => levelStore.servicesFor(level.value))
 <template>
   <div v-if="auth.currentUser && currentLevel" class="space-y-5">
     <section
-      class="stamp-grid border-ink-700/70 from-ink-800 to-ink-900 rounded-2xl border bg-gradient-to-br p-6 sm:p-8"
+      class="stamp-grid border-border/70 from-surface to-muted rounded-2xl border bg-gradient-to-br p-6 sm:p-8"
     >
       <div class="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p class="text-passport-400 text-xs font-semibold tracking-[0.18em] uppercase">
+          <p class="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
             Your current level
           </p>
-          <h2 class="text-ink-50 mt-2 text-3xl font-bold sm:text-4xl">
+          <h2 class="text-foreground mt-2 text-3xl font-bold sm:text-4xl">
             {{ currentLevel.name }}
           </h2>
-          <p class="text-ink-300 mt-1 text-sm">{{ currentLevel.tagline }}</p>
+          <p class="text-muted-foreground mt-1 text-sm">{{ currentLevel.tagline }}</p>
         </div>
         <LevelBadge :level="level" :name="currentLevel.name" size="lg" />
       </div>
-      <p class="text-ink-300 mt-5 max-w-2xl text-sm leading-relaxed">
+      <p class="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">
         {{ currentLevel.description }}
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
@@ -62,7 +62,7 @@ const services = computed(() => levelStore.servicesFor(level.value))
       title="You have reached the top of the passport"
       subtitle="Level 4 is the final level — there is no exam beyond this one"
     >
-      <p class="text-ink-300 text-sm leading-relaxed">
+      <p class="text-muted-foreground text-sm leading-relaxed">
         Every benefit and every service the Service offers is already yours.
       </p>
     </BaseCard>

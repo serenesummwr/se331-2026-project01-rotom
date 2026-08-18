@@ -31,21 +31,21 @@ const rows = computed(() => [
       <img
         :src="user.avatar"
         :alt="fullName"
-        class="ring-passport-400/40 bg-ink-700 size-16 rounded-2xl object-cover ring-2"
+        class="ring-primary/40 bg-border size-16 rounded-2xl object-cover ring-2"
       />
       <div class="min-w-0">
-        <h3 class="text-ink-50 truncate text-lg font-semibold">{{ fullName }}</h3>
-        <p class="text-ink-400 text-sm">@{{ user.username }}</p>
+        <h3 class="text-foreground truncate text-lg font-semibold">{{ fullName }}</h3>
+        <p class="text-muted-foreground text-sm">@{{ user.username }}</p>
       </div>
       <LevelBadge :level="user.level" :name="levelName" size="lg" class="ms-auto" />
     </div>
     <dl class="grid gap-x-6 gap-y-4 sm:grid-cols-2">
       <div v-for="row in rows" :key="row.label">
-        <dt class="text-ink-400 text-xs tracking-wide uppercase">{{ row.label }}</dt>
-        <dd class="text-ink-100 mt-1 text-sm break-words">{{ row.value }}</dd>
+        <dt class="text-muted-foreground text-xs tracking-wide uppercase">{{ row.label }}</dt>
+        <dd class="text-foreground mt-1 text-sm break-words">{{ row.value }}</dd>
       </div>
       <div v-if="showStatus">
-        <dt class="text-ink-400 text-xs tracking-wide uppercase">Account status</dt>
+        <dt class="text-muted-foreground text-xs tracking-wide uppercase">Account status</dt>
         <dd
           class="mt-1 text-sm font-semibold"
           :class="user.active ? 'text-success' : 'text-danger'"
@@ -55,10 +55,10 @@ const rows = computed(() => [
       </div>
     </dl>
     <div v-if="user.bio">
-      <dt class="text-ink-400 text-xs tracking-wide uppercase">About</dt>
-      <p class="text-ink-200 mt-1 text-sm leading-relaxed">{{ user.bio }}</p>
+      <dt class="text-muted-foreground text-xs tracking-wide uppercase">About</dt>
+      <p class="text-foreground mt-1 text-sm leading-relaxed">{{ user.bio }}</p>
     </div>
-    <div v-if="$slots.footer" class="border-ink-700/70 border-t pt-4">
+    <div v-if="$slots.footer" class="border-border/70 border-t pt-4">
       <slot name="footer" />
     </div>
   </div>

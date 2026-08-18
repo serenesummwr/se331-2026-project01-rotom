@@ -13,12 +13,14 @@ const emit = defineEmits<{
   reset: []
 }>()
 const fieldClass =
-  'w-full rounded-lg border border-ink-600 bg-ink-900/60 px-3 py-2 text-sm text-ink-100 placeholder:text-ink-500 focus:border-passport-400 focus:outline-none'
+  'w-full rounded-lg border border-border-strong bg-muted/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none'
 </script>
 <template>
   <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
     <label class="block lg:col-span-2">
-      <span class="text-ink-400 mb-1.5 block text-xs tracking-wide uppercase">Name or surname</span>
+      <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+        >Name or surname</span
+      >
       <input
         :value="filters.name"
         :class="fieldClass"
@@ -27,7 +29,7 @@ const fieldClass =
       />
     </label>
     <label class="block">
-      <span class="text-ink-400 mb-1.5 block text-xs tracking-wide uppercase">Level</span>
+      <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">Level</span>
       <select
         :value="filters.level"
         :class="fieldClass"
@@ -46,7 +48,9 @@ const fieldClass =
       </select>
     </label>
     <label class="block">
-      <span class="text-ink-400 mb-1.5 block text-xs tracking-wide uppercase">Province</span>
+      <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+        >Province</span
+      >
       <select
         :value="filters.province"
         :class="fieldClass"
@@ -58,7 +62,7 @@ const fieldClass =
         </option>
       </select>
     </label>
-    <div class="text-ink-500 flex items-center gap-3 text-xs sm:col-span-2 lg:col-span-4">
+    <div class="text-muted-foreground flex items-center gap-3 text-xs sm:col-span-2 lg:col-span-4">
       <span>{{ resultCount }} member{{ resultCount === 1 ? '' : 's' }} match</span>
       <BaseButton variant="ghost" size="sm" @click="emit('reset')">Clear filters</BaseButton>
     </div>

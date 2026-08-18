@@ -62,11 +62,11 @@ const recentAttempts = computed(() =>
       <div
         v-for="stat in stats"
         :key="stat.label"
-        class="border-ink-700/70 bg-ink-800/60 rounded-2xl border p-5"
+        class="border-border/70 bg-surface/60 rounded-2xl border p-5"
       >
-        <p class="text-ink-400 text-xs tracking-wide uppercase">{{ stat.label }}</p>
-        <p class="text-ink-50 mt-2 text-3xl font-semibold">{{ stat.value }}</p>
-        <p class="text-ink-500 mt-1 text-xs">{{ stat.hint }}</p>
+        <p class="text-muted-foreground text-xs tracking-wide uppercase">{{ stat.label }}</p>
+        <p class="text-foreground mt-2 text-3xl font-semibold">{{ stat.value }}</p>
+        <p class="text-muted-foreground mt-1 text-xs">{{ stat.hint }}</p>
       </div>
     </div>
     <div class="grid gap-5 lg:grid-cols-2">
@@ -75,9 +75,9 @@ const recentAttempts = computed(() =>
           <li v-for="row in distribution" :key="row.level.id">
             <div class="mb-1.5 flex items-center justify-between gap-3">
               <LevelBadge :level="row.level.id as LevelId" :name="row.level.name" size="sm" />
-              <span class="text-ink-400 text-xs">{{ row.count }} · {{ row.share }}%</span>
+              <span class="text-muted-foreground text-xs">{{ row.count }} · {{ row.share }}%</span>
             </div>
-            <div class="bg-ink-600 h-2 overflow-hidden rounded-full">
+            <div class="bg-border-strong h-2 overflow-hidden rounded-full">
               <div
                 class="h-full rounded-full"
                 :class="barColour[row.level.id as LevelId]"
@@ -91,13 +91,13 @@ const recentAttempts = computed(() =>
         <template #actions>
           <RouterLink
             :to="{ name: 'admin-users' }"
-            class="text-passport-400 hover:text-passport-300 inline-flex items-center gap-1 text-xs font-semibold"
+            class="text-primary hover:text-primary-hover inline-flex items-center gap-1 text-xs font-semibold"
           >
             Open directory
             <ChevronRight class="size-3.5" :stroke-width="2.5" />
           </RouterLink>
         </template>
-        <ul class="divide-ink-700 -my-2 divide-y">
+        <ul class="divide-border -my-2 divide-y">
           <li
             v-for="attempt in recentAttempts"
             :key="attempt.id"
@@ -107,32 +107,32 @@ const recentAttempts = computed(() =>
               v-if="attempt.user"
               :src="attempt.user.avatar"
               :alt="attempt.user.firstName"
-              class="bg-ink-700 size-9 rounded-lg object-cover"
+              class="bg-border size-9 rounded-lg object-cover"
             />
             <span class="min-w-0 flex-1">
               <RouterLink
                 v-if="attempt.user && router.hasRoute('admin-user-level')"
                 :to="{ name: 'admin-user-level', params: { id: String(attempt.user.id) } }"
-                class="text-ink-100 hover:text-passport-300 block truncate text-sm font-medium"
+                class="text-foreground hover:text-primary-hover block truncate text-sm font-medium"
               >
                 {{ attempt.user.firstName }} {{ attempt.user.lastName }}
               </RouterLink>
               <span
                 v-else-if="attempt.user"
-                class="text-ink-100 block truncate text-sm font-medium"
+                class="text-foreground block truncate text-sm font-medium"
               >
                 {{ attempt.user.firstName }} {{ attempt.user.lastName }}
               </span>
-              <span class="text-ink-500 block text-xs">
+              <span class="text-muted-foreground block text-xs">
                 Level {{ attempt.levelId }} exam · {{ attempt.when }}
               </span>
             </span>
             <span class="text-right">
-              <span class="text-ink-200 block text-sm font-semibold">
+              <span class="text-foreground block text-sm font-semibold">
                 {{ attempt.score }}/{{ attempt.total }}
               </span>
               <span
-                class="block text-[11px] font-medium"
+                class="block text-xs font-medium"
                 :class="attempt.passed ? 'text-success' : 'text-danger'"
               >
                 {{ attempt.passed ? 'Passed' : 'Failed' }}

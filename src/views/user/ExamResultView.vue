@@ -71,10 +71,7 @@ const upgradedTo = computed(() => {
       hint="Exam history is kept in memory for the session, so a hard refresh clears attempts made in this sitting."
     />
     <div v-if="router.hasRoute('user-profile-history')" class="text-center">
-      <RouterLink
-        :to="{ name: 'user-profile-history' }"
-        class="text-passport-400 text-sm font-semibold"
-      >
+      <RouterLink :to="{ name: 'user-profile-history' }" class="text-primary text-sm font-semibold">
         Open my exam history
       </RouterLink>
     </div>

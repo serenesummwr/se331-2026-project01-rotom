@@ -63,24 +63,26 @@ function submit() {
   emit('save', { question: form.question.trim(), choices, answerIndex })
 }
 const fieldClass =
-  'w-full rounded-lg border border-ink-600 bg-ink-900/60 px-3 py-2 text-sm text-ink-100 placeholder:text-ink-500 focus:border-passport-400 focus:outline-none'
+  'w-full rounded-lg border border-border-strong bg-muted/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none'
 </script>
 <template>
   <form
-    class="border-passport-400/30 bg-ink-900/40 space-y-5 rounded-xl border p-5"
+    class="border-primary/30 bg-muted/40 space-y-5 rounded-xl border p-5"
     novalidate
     @submit.prevent="submit"
   >
     <div>
-      <h3 class="text-ink-50 text-sm font-semibold">
+      <h3 class="text-foreground text-sm font-semibold">
         {{ question ? 'Edit question' : 'New question' }}
       </h3>
-      <p class="text-ink-500 mt-0.5 text-xs">
+      <p class="text-muted-foreground mt-0.5 text-xs">
         {{ levelName }} upgrade exam · members see the choices in this order
       </p>
     </div>
     <label class="block">
-      <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">Question</span>
+      <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+        >Question</span
+      >
       <textarea
         v-model="form.question"
         rows="2"
@@ -92,7 +94,7 @@ const fieldClass =
       </span>
     </label>
     <fieldset>
-      <legend class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+      <legend class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
         Choices — select the correct one
       </legend>
       <div class="space-y-2">
@@ -102,7 +104,7 @@ const fieldClass =
             type="radio"
             :value="index"
             :aria-label="`Choice ${index + 1} is correct`"
-            class="accent-passport-400 size-4 shrink-0"
+            class="accent-primary size-4 shrink-0"
           />
           <input
             v-model="form.choices[index]"
@@ -111,7 +113,7 @@ const fieldClass =
           />
           <button
             type="button"
-            class="text-ink-500 hover:bg-ink-800 hover:text-danger shrink-0 rounded-lg p-1.5 transition disabled:pointer-events-none disabled:opacity-30"
+            class="text-muted-foreground hover:bg-surface hover:text-danger shrink-0 rounded-lg p-1.5 transition disabled:pointer-events-none disabled:opacity-30"
             :disabled="form.choices.length <= MIN_CHOICES"
             :title="`Remove choice ${index + 1}`"
             :aria-label="`Remove choice ${index + 1}`"

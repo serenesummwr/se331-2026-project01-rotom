@@ -22,7 +22,7 @@ const tabs = computed(() => [
   <div v-if="user" class="space-y-5">
     <RouterLink
       :to="{ name: 'admin-users' }"
-      class="text-ink-400 hover:text-ink-100 inline-flex items-center gap-1.5 text-sm"
+      class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
     >
       <ArrowLeft class="size-4" :stroke-width="1.75" />
       Back to the directory
@@ -42,7 +42,7 @@ const tabs = computed(() => [
       :hint="`The directory has no member number ${id}. Head back and pick one from the list.`"
     />
     <div class="text-center">
-      <RouterLink :to="{ name: 'admin-users' }" class="text-passport-400 text-sm font-semibold">
+      <RouterLink :to="{ name: 'admin-users' }" class="text-primary text-sm font-semibold">
         Back to the directory
       </RouterLink>
     </div>

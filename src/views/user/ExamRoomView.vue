@@ -46,33 +46,33 @@ function submit() {
 }
 </script>
 <template>
-  <div class="bg-ink-950 min-h-dvh">
-    <header class="border-ink-700/70 bg-shell border-b">
+  <div class="bg-background min-h-dvh">
+    <header class="border-border/70 bg-surface border-b">
       <div class="mx-auto max-w-3xl px-6 py-5">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <RouterLink
             :to="{ name: 'user-exam' }"
-            class="text-ink-400 hover:text-ink-100 inline-flex items-center gap-1.5 text-sm"
+            class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
           >
             <ArrowLeft class="size-4" :stroke-width="1.75" />
             Leave the exam room
           </RouterLink>
-          <p class="text-ink-500 text-xs">Leaving discards this attempt</p>
+          <p class="text-muted-foreground text-xs">Leaving discards this attempt</p>
         </div>
         <div class="mt-5 text-center">
-          <p v-if="currentLevel" class="text-ink-500 text-xs tracking-wide uppercase">
+          <p v-if="currentLevel" class="text-muted-foreground text-xs tracking-wide uppercase">
             {{ currentLevel.name }} · pass at {{ currentLevel.passCriteria }}%
           </p>
-          <h1 class="text-ink-50 mt-1 text-lg font-semibold sm:text-xl">
+          <h1 class="text-foreground mt-1 text-lg font-semibold sm:text-xl">
             Level {{ level }} exam ({{ total }} questions)
           </h1>
-          <p class="text-ink-100 mt-4 text-3xl font-bold tabular-nums">
+          <p class="text-foreground mt-4 text-3xl font-bold tabular-nums">
             {{ examStore.answeredCount }}
-            <span class="text-ink-500 text-base font-medium">of {{ total }} answered</span>
+            <span class="text-muted-foreground text-base font-medium">of {{ total }} answered</span>
           </p>
-          <div class="bg-ink-600 mx-auto mt-3 h-1.5 max-w-xs overflow-hidden rounded-full">
+          <div class="bg-border-strong mx-auto mt-3 h-1.5 max-w-xs overflow-hidden rounded-full">
             <div
-              class="bg-passport-400 h-full rounded-full transition-all"
+              class="bg-primary h-full rounded-full transition-all"
               :style="{ width: progress }"
             />
           </div>

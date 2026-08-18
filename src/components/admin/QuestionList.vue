@@ -37,17 +37,17 @@ function remove(id: number) {
     <li
       v-for="(question, index) in questions"
       :key="question.id"
-      class="border-ink-700/70 bg-ink-900/40 rounded-xl border p-4"
+      class="border-border/70 bg-muted/40 rounded-xl border p-4"
     >
       <div class="flex items-start justify-between gap-3">
-        <p class="text-ink-100 text-sm font-medium">
-          <span class="text-passport-400 me-1.5">{{ index + 1 }}.</span>
+        <p class="text-foreground text-sm font-medium">
+          <span class="text-primary me-1.5">{{ index + 1 }}.</span>
           {{ question.question }}
         </p>
         <div v-if="editable" class="flex shrink-0 items-center gap-1">
           <button
             type="button"
-            class="text-ink-400 hover:bg-ink-800 hover:text-ink-100 rounded-lg p-1.5 transition"
+            class="text-muted-foreground hover:bg-surface hover:text-foreground rounded-lg p-1.5 transition"
             :title="`Edit question ${index + 1}`"
             :aria-label="`Edit question ${index + 1}`"
             @click="emit('edit', question.id)"
@@ -56,7 +56,7 @@ function remove(id: number) {
           </button>
           <button
             type="button"
-            class="text-ink-400 hover:bg-ink-800 hover:text-danger rounded-lg p-1.5 transition"
+            class="text-muted-foreground hover:bg-surface hover:text-danger rounded-lg p-1.5 transition"
             :title="`Delete question ${index + 1}`"
             :aria-label="`Delete question ${index + 1}`"
             @click="confirmingId = question.id"
@@ -70,7 +70,7 @@ function remove(id: number) {
           v-for="(choice, choiceIndex) in question.choices"
           :key="choiceIndex"
           class="flex items-start gap-2 text-xs"
-          :class="choiceIndex === question.answerIndex ? 'text-success' : 'text-ink-400'"
+          :class="choiceIndex === question.answerIndex ? 'text-success' : 'text-muted-foreground'"
         >
           <span class="grid w-4 shrink-0 place-items-center pt-0.5">
             <Check
@@ -78,16 +78,16 @@ function remove(id: number) {
               class="size-3.5"
               :stroke-width="2.5"
             />
-            <span v-else class="bg-ink-600 size-1 rounded-full" />
+            <span v-else class="bg-border-strong size-1 rounded-full" />
           </span>
           <span>{{ choice }}</span>
         </li>
       </ul>
       <div
         v-if="confirmingId === question.id"
-        class="border-ink-700 bg-ink-900 mt-4 flex flex-wrap items-center gap-3 rounded-lg border p-3"
+        class="border-border bg-muted mt-4 flex flex-wrap items-center gap-3 rounded-lg border p-3"
       >
-        <p class="text-ink-200 min-w-0 flex-1 text-xs">
+        <p class="text-foreground min-w-0 flex-1 text-xs">
           Delete this question? Members sitting this level will no longer see it.
         </p>
         <BaseButton size="sm" variant="danger" @click="remove(question.id)">

@@ -47,7 +47,7 @@ function removeQuestion(id: number) {
   <div v-if="level" class="space-y-5">
     <RouterLink
       :to="{ name: 'admin-level-detail', params: { id } }"
-      class="text-ink-400 hover:text-ink-100 inline-flex items-center gap-1.5 text-sm"
+      class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
     >
       <ArrowLeft class="size-4" :stroke-width="1.75" />
       Back to {{ level.name }}

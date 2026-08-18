@@ -36,7 +36,7 @@ function applyStatusChange() {
           >
             {{ user.active ? 'Deactivate this member' : 'Reactivate this member' }}
           </BaseButton>
-          <p class="text-ink-500 text-xs">
+          <p class="text-muted-foreground text-xs">
             {{
               user.active
                 ? 'A deactivated member keeps their level and history but cannot use the Service.'
@@ -46,9 +46,9 @@ function applyStatusChange() {
         </div>
         <div
           v-else
-          class="border-ink-700 bg-ink-900/60 flex flex-wrap items-center gap-3 rounded-xl border p-4"
+          class="border-border bg-muted/60 flex flex-wrap items-center gap-3 rounded-xl border p-4"
         >
-          <p class="text-ink-200 min-w-0 flex-1 text-sm">
+          <p class="text-foreground min-w-0 flex-1 text-sm">
             {{ user.active ? 'Deactivate' : 'Reactivate' }}
             <strong>{{ user.firstName }} {{ user.lastName }}</strong
             >?

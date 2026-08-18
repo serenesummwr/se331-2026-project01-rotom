@@ -37,7 +37,7 @@ function logout() {
 }
 </script>
 <template>
-  <div v-if="auth.currentUser" class="bg-ink-950 min-h-dvh">
+  <div v-if="auth.currentUser" class="bg-background min-h-dvh">
     <AppSidebar
       :items="nav"
       :open="navOpen"
