@@ -1,102 +1,98 @@
 @import 'tailwindcss';
 :root {
   color-scheme: light;
-  --ink-950: #fcfcfb;
-  --ink-900: #f2f1ee;
-  --ink-800: #ffffff;
-  --ink-700: #e5e3de;
-  --ink-600: #d5d2cb;
-  --ink-500: #8f8c82;
-  --ink-400: #78756c;
-  --ink-300: #5c5a53;
-  --ink-200: #403e39;
-  --ink-100: #2a2926;
-  --ink-50: #141413;
-  --passport-300: #b8664a;
-  --passport-400: #cc785c;
-  --passport-500: #b05a38;
-  --passport-600: #964a2e;
+
+  --background: #fcfcfb;
+  --surface: #ffffff;
+  --muted: #f2f1ee;
+
+  --border: #e5e3de;
+  --border-strong: #d5d2cb;
+
+  --foreground: #141413;
+  --muted-foreground: #78756c;
+
+  --primary: #cc785c;
+  --primary-hover: #b8664a;
+  --primary-foreground: #141413;
+
+  --success: #4f7a4f;
+  --danger: #b4463c;
+
   --level-1: #8a8780;
   --level-2: #a8823f;
   --level-3: #c2603a;
   --level-4: #7a2d14;
-  --success: #4f7a4f;
-  --danger: #b4463c;
-  --accent-fg: #141413;
-  --shell: #fbfbf9;
-  --shell-hover: #f0efec;
-  --menu-hover: var(--shell-hover);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --ink-950: #141413;
-    --ink-900: #1f1e1d;
-    --ink-800: #262624;
-    --ink-700: #353431;
-    --ink-600: #4a4945;
-    --ink-500: #7c7a73;
-    --ink-400: #9a978f;
-    --ink-300: #b8b5ad;
-    --ink-200: #d6d3cb;
-    --ink-100: #edebe4;
-    --ink-50: #fafaf7;
-    --passport-300: #e8916f;
-    --passport-400: #d97757;
-    --passport-500: #c4633f;
-    --passport-600: #a8502f;
+
+    --background: #141413;
+    --surface: #262624;
+    --muted: #1f1e1d;
+
+    --border: #353431;
+    --border-strong: #4a4945;
+
+    --foreground: #fafaf7;
+    --muted-foreground: #9a978f;
+
+    --primary: #d97757;
+    --primary-hover: #e8916f;
+    --primary-foreground: #141413;
+
+    --success: #6fa76f;
+    --danger: #d97066;
+
     --level-1: #a3a09a;
     --level-2: #dcb079;
     --level-3: #ec8154;
     --level-4: #d04a26;
-    --success: #6fa76f;
-    --danger: #d97066;
-
-    --shell: var(--ink-900);
-    --shell-hover: var(--ink-800);
-    --menu-hover: color-mix(in oklab, var(--ink-700) 70%, transparent);
   }
 }
 @theme {
-  --color-ink-950: var(--ink-950);
-  --color-ink-900: var(--ink-900);
-  --color-ink-800: var(--ink-800);
-  --color-ink-700: var(--ink-700);
-  --color-ink-600: var(--ink-600);
-  --color-ink-500: var(--ink-500);
-  --color-ink-400: var(--ink-400);
-  --color-ink-300: var(--ink-300);
-  --color-ink-200: var(--ink-200);
-  --color-ink-100: var(--ink-100);
-  --color-ink-50: var(--ink-50);
-  --color-passport-300: var(--passport-300);
-  --color-passport-400: var(--passport-400);
-  --color-passport-500: var(--passport-500);
-  --color-passport-600: var(--passport-600);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
   --color-level-1: var(--level-1);
   --color-level-2: var(--level-2);
   --color-level-3: var(--level-3);
   --color-level-4: var(--level-4);
-  --color-success: var(--success);
-  --color-danger: var(--danger);
-  --color-accent-fg: var(--accent-fg);
-  --color-shell: var(--shell);
-  --color-shell-hover: var(--shell-hover);
-  --color-menu-hover: var(--menu-hover);
   --font-display: 'Outfit Variable', 'Outfit', 'Avenir Next', 'Segoe UI', sans-serif;
+  --text-xs: 0.9375rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 1.0625rem;
+  --text-base: 1.1875rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.25rem;
+  --text-6xl: 4rem;
 }
 html {
   scroll-behavior: smooth;
 }
 body {
-  @apply bg-ink-950 text-ink-100 antialiased;
+  @apply bg-background text-foreground antialiased;
   font-family: var(--font-display);
 }
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-passport-400;
+  @apply outline-primary outline-2 outline-offset-2;
 }
 #nprogress .bar {
-  background: var(--passport-400);
+  background: var(--primary);
   height: 2px;
 }
 #nprogress .peg {
@@ -105,7 +101,7 @@ body {
 .stamp-grid {
   background-image: radial-gradient(
     circle at 1px 1px,
-    color-mix(in oklab, var(--ink-50) 8%, transparent) 1px,
+    color-mix(in oklab, var(--foreground) 8%, transparent) 1px,
     transparent 0
   );
   background-size: 22px 22px;

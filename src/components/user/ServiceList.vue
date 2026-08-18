@@ -14,15 +14,15 @@ defineProps<{
     :icon="Wrench"
     title="No services listed for this level"
   />
-  <ul v-else class="divide-ink-700/70 -my-3 divide-y">
+  <ul v-else class="divide-border/70 -my-3 divide-y">
     <li
       v-for="service in services"
       :key="service.id"
       class="py-3.5"
       :class="locked ? 'opacity-50' : ''"
     >
-      <p class="text-ink-100 text-sm font-semibold">{{ service.name }}</p>
-      <p class="text-ink-400 mt-0.5 text-xs leading-relaxed">{{ service.description }}</p>
+      <p class="text-foreground text-sm font-semibold">{{ service.name }}</p>
+      <p class="text-muted-foreground mt-0.5 text-xs leading-relaxed">{{ service.description }}</p>
     </li>
   </ul>
 </template>

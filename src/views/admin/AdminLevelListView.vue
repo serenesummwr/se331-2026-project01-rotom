@@ -21,7 +21,7 @@ const rows = computed(() =>
 </script>
 <template>
   <div class="space-y-5">
-    <p class="text-ink-400 text-sm">
+    <p class="text-muted-foreground text-sm">
       The four levels of the passport, what each one unlocks, and the exam that opens the next one.
     </p>
     <div class="grid gap-5 md:grid-cols-2">

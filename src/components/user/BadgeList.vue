@@ -39,7 +39,7 @@ function ringStyle(index: number, earned: boolean) {
         :class="
           badge.levelId <= currentLevel
             ? ink[badge.levelId]
-            : 'border-dashed border-ink-600 ring-transparent text-ink-500'
+            : 'border-dashed border-border-strong ring-transparent text-muted-foreground'
         "
         :style="ringStyle(index, badge.levelId <= currentLevel)"
       >
@@ -50,14 +50,16 @@ function ringStyle(index: number, earned: boolean) {
             :stroke-width="1.5"
             :class="badge.levelId > currentLevel && 'opacity-30'"
           />
-          <span class="text-[10px] font-bold tracking-[0.15em]">LV{{ badge.levelId }}</span>
+          <span class="text-xs font-bold tracking-[0.15em]">LV{{ badge.levelId }}</span>
         </span>
       </span>
-      <span class="text-ink-100 mt-3 block text-sm font-semibold">{{ badge.name }}</span>
-      <span class="text-ink-500 mt-1 block text-xs leading-relaxed">{{ badge.description }}</span>
+      <span class="text-foreground mt-3 block text-sm font-semibold">{{ badge.name }}</span>
+      <span class="text-muted-foreground mt-1 block text-xs leading-relaxed">{{
+        badge.description
+      }}</span>
       <span
-        class="mt-2 inline-block text-[11px] font-semibold"
-        :class="badge.levelId <= currentLevel ? 'text-success' : 'text-ink-600'"
+        class="mt-2 inline-block text-xs font-semibold"
+        :class="badge.levelId <= currentLevel ? 'text-success' : 'text-muted-foreground'"
       >
         {{ badge.levelId <= currentLevel ? 'Earned' : `Unlocks at Level ${badge.levelId}` }}
       </span>

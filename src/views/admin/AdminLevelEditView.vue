@@ -47,7 +47,7 @@ function removeQuestion(id: number) {
   <div v-if="level" class="space-y-5">
     <RouterLink
       :to="{ name: 'admin-level-detail', params: { id } }"
-      class="text-ink-400 hover:text-ink-100 inline-flex items-center gap-1.5 text-sm"
+      class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
     >
       <ArrowLeft class="size-4" :stroke-width="1.75" />
       Back to {{ level.name }}
@@ -70,12 +70,7 @@ function removeQuestion(id: number) {
       :subtitle="`${questions.length} question${questions.length === 1 ? '' : 's'} · a member must score ${level.passCriteria}% of them to pass`"
     >
       <template #actions>
-        <BaseButton
-          v-if="editing !== 'new'"
-          size="sm"
-          variant="secondary"
-          @click="editing = 'new'"
-        >
+        <BaseButton v-if="editing !== 'new'" size="sm" variant="secondary" @click="editing = 'new'">
           <Plus class="size-3.5" :stroke-width="2.5" />
           Add question
         </BaseButton>

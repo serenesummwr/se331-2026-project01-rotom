@@ -56,7 +56,7 @@ function submit() {
   router.replace({ name: 'user-dashboard' })
 }
 const fieldClass =
-  'w-full rounded-lg border border-ink-600 bg-ink-900/70 px-3.5 py-2.5 text-sm text-ink-100 placeholder:text-ink-500 focus:border-passport-400 focus:outline-none'
+  'w-full rounded-lg border border-border-strong bg-muted/70 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none'
 </script>
 <template>
   <div class="min-h-dvh">
@@ -64,19 +64,19 @@ const fieldClass =
       <div class="w-full max-w-xl">
         <RouterLink
           :to="{ name: 'landing' }"
-          class="text-ink-400 hover:text-ink-100 mb-8 inline-flex items-center gap-2 text-sm"
+          class="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm"
         >
           <ArrowLeft class="size-4" />
           Back
         </RouterLink>
-        <h1 class="text-ink-50 text-2xl font-semibold">Open your passport</h1>
-        <p class="text-ink-400 mt-1.5 text-sm">
+        <h1 class="text-foreground text-2xl font-semibold">Open your passport</h1>
+        <p class="text-muted-foreground mt-1.5 text-sm">
           Register to start at Level 1 — you can sit the exam whenever you are ready.
         </p>
         <form class="mt-8 space-y-5" novalidate @submit.prevent="submit">
           <div class="grid gap-4 sm:grid-cols-2">
             <label class="block sm:col-span-2">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
                 Username
               </span>
               <input
@@ -92,7 +92,7 @@ const fieldClass =
               </span>
             </label>
             <label class="block">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
                 First name
               </span>
               <input
@@ -106,7 +106,7 @@ const fieldClass =
               </span>
             </label>
             <label class="block">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
                 Last name
               </span>
               <input
@@ -120,7 +120,9 @@ const fieldClass =
               </span>
             </label>
             <label class="block">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">Email</span>
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+                >Email</span
+              >
               <input
                 v-model="form.email"
                 type="email"
@@ -133,7 +135,9 @@ const fieldClass =
               </span>
             </label>
             <label class="block">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">Phone</span>
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+                >Phone</span
+              >
               <input
                 v-model="form.phone"
                 :class="fieldClass"
@@ -147,7 +151,7 @@ const fieldClass =
               </span>
             </label>
             <label class="block sm:col-span-2">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
                 Province
               </span>
               <select v-model="form.province" :class="fieldClass">
@@ -161,7 +165,7 @@ const fieldClass =
               </select>
             </label>
             <label class="block">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
                 Password
               </span>
               <input
@@ -176,7 +180,7 @@ const fieldClass =
               </span>
             </label>
             <label class="block">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
                 Confirm password
               </span>
               <input
@@ -191,8 +195,8 @@ const fieldClass =
               </span>
             </label>
             <label class="block sm:col-span-2">
-              <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
-                About you <span class="text-ink-600">— optional</span>
+              <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
+                About you <span class="text-muted-foreground">— optional</span>
               </span>
               <textarea
                 v-model="form.bio"
@@ -202,7 +206,7 @@ const fieldClass =
               />
             </label>
           </div>
-          <p class="text-ink-500 text-xs leading-relaxed">
+          <p class="text-muted-foreground text-xs leading-relaxed">
             This is a demo, so your account is only kept until you refresh the page. When you sign
             in, use the username you chose—any password will work.
           </p>
@@ -210,14 +214,14 @@ const fieldClass =
             <BaseButton type="submit" :disabled="submitted && !isValid">
               Create my passport
             </BaseButton>
-            <span v-if="submitted && !isValid" class="text-ink-500 text-xs">
+            <span v-if="submitted && !isValid" class="text-muted-foreground text-xs">
               Fix the highlighted fields to continue.
             </span>
           </div>
         </form>
-        <p class="border-ink-700/70 text-ink-400 mt-8 border-t pt-6 text-sm">
+        <p class="border-border/70 text-muted-foreground mt-8 border-t pt-6 text-sm">
           Already have a passport?
-          <RouterLink :to="{ name: 'login' }" class="text-passport-400 font-semibold">
+          <RouterLink :to="{ name: 'login' }" class="text-primary font-semibold">
             Sign in instead
           </RouterLink>
         </p>

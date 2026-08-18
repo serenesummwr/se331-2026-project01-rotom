@@ -36,37 +36,41 @@ function useDemo(name: string) {
   submit()
 }
 const fieldClass =
-  'w-full rounded-lg border border-ink-600 bg-ink-900/70 px-3.5 py-2.5 text-sm text-ink-100 placeholder:text-ink-500 focus:border-passport-400 focus:outline-none'
+  'w-full rounded-lg border border-border-strong bg-muted/70 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none'
 </script>
 <template>
   <div class="grid min-h-dvh lg:grid-cols-2">
-    <aside class="stamp-grid bg-ink-900 hidden flex-col justify-between p-12 lg:flex">
+    <aside class="stamp-grid bg-muted hidden flex-col justify-between p-12 lg:flex">
       <RouterLink :to="{ name: 'landing' }" class="flex items-center gap-2.5">
-        <span class="text-ink-50 text-lg font-semibold">CAT Passport</span>
+        <span class="text-foreground text-lg font-semibold">CAT Passport</span>
       </RouterLink>
       <div>
-        <h2 class="text-ink-50 max-w-md text-3xl leading-snug font-semibold">Welcome back.</h2>
-        <p class="text-ink-400 mt-4 max-w-md text-sm leading-relaxed">
+        <h2 class="text-foreground max-w-md text-3xl leading-snug font-semibold">Welcome back.</h2>
+        <p class="text-muted-foreground mt-4 max-w-md text-sm leading-relaxed">
           Sign in to continue learning, check your progress, or take your next exam.
         </p>
       </div>
-      <p class="text-ink-600 text-xs">SE331 · Term Project I</p>
+      <p class="text-muted-foreground text-xs">SE331 · Term Project I</p>
     </aside>
     <!-- Form -->
     <main class="flex items-center justify-center px-6 py-12">
       <div class="w-full max-w-sm">
         <RouterLink
           :to="{ name: 'landing' }"
-          class="text-ink-400 hover:text-ink-100 mb-8 inline-flex items-center gap-2 text-sm lg:invisible"
+          class="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm lg:invisible"
         >
           <ArrowLeft class="size-4" />
           Back
         </RouterLink>
-        <h1 class="text-ink-50 text-2xl font-semibold">Sign in</h1>
-        <p class="text-ink-400 mt-1.5 text-sm">Enter your username to open your passport.</p>
+        <h1 class="text-foreground text-2xl font-semibold">Sign in</h1>
+        <p class="text-muted-foreground mt-1.5 text-sm">
+          Enter your username to open your passport.
+        </p>
         <form class="mt-8 space-y-4" novalidate @submit.prevent="submit">
           <label class="block">
-            <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">Username</span>
+            <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+              >Username</span
+            >
             <input
               v-model="username"
               :class="fieldClass"
@@ -76,7 +80,9 @@ const fieldClass =
             />
           </label>
           <label class="block">
-            <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">Password</span>
+            <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
+              >Password</span
+            >
             <input
               v-model="password"
               type="password"
@@ -84,7 +90,7 @@ const fieldClass =
               placeholder="Anything at all"
               autocomplete="current-password"
             />
-            <span class="text-ink-500 mt-1.5 block text-xs">
+            <span class="text-muted-foreground mt-1.5 block text-xs">
               For this demo, any password will work.
             </span>
           </label>
@@ -93,26 +99,28 @@ const fieldClass =
           </p>
           <BaseButton type="submit" class="w-full">Sign in</BaseButton>
         </form>
-        <p class="text-ink-400 mt-6 text-sm">
+        <p class="text-muted-foreground mt-6 text-sm">
           No passport yet?
-          <RouterLink :to="{ name: 'register' }" class="text-passport-400 font-semibold">
+          <RouterLink :to="{ name: 'register' }" class="text-primary font-semibold">
             Register for one
           </RouterLink>
         </p>
-        <div class="border-ink-700/70 mt-8 border-t pt-6">
-          <p class="text-ink-400 mb-3 text-xs tracking-wide uppercase">Demo accounts</p>
+        <div class="border-border/70 mt-8 border-t pt-6">
+          <p class="text-muted-foreground mb-3 text-xs tracking-wide uppercase">Demo accounts</p>
           <ul class="space-y-2">
             <li v-for="account in demoAccounts" :key="account.username">
               <button
                 type="button"
-                class="border-ink-700 hover:border-passport-400/60 hover:bg-ink-800/70 flex w-full items-center justify-between rounded-lg border px-3.5 py-2.5 text-start transition"
+                class="border-border hover:border-primary/60 hover:bg-surface/70 flex w-full items-center justify-between rounded-lg border px-3.5 py-2.5 text-start transition"
                 @click="useDemo(account.username)"
               >
                 <span>
-                  <span class="text-ink-100 block text-sm font-medium">{{ account.username }}</span>
-                  <span class="text-ink-500 block text-xs">{{ account.hint }}</span>
+                  <span class="text-foreground block text-sm font-medium">{{
+                    account.username
+                  }}</span>
+                  <span class="text-muted-foreground block text-xs">{{ account.hint }}</span>
                 </span>
-                <span class="text-ink-500 text-xs">{{ account.label }}</span>
+                <span class="text-muted-foreground text-xs">{{ account.label }}</span>
               </button>
             </li>
           </ul>

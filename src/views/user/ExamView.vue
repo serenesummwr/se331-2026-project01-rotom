@@ -55,45 +55,43 @@ function start() {
     </BaseCard>
     <template v-else-if="currentLevel">
       <BaseCard>
-        <p class="text-passport-400 text-xs font-semibold tracking-[0.18em] uppercase">
+        <p class="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
           Level {{ currentLevel.id }} exam
         </p>
-        <h2 class="text-ink-50 mt-2 text-2xl font-bold sm:text-3xl">
+        <h2 class="text-foreground mt-2 text-2xl font-bold sm:text-3xl">
           {{ currentLevel.name }} → {{ nextLevel?.name }}
         </h2>
-        <p class="text-ink-400 mt-6 text-xs tracking-wide uppercase">Instructions</p>
-        <ul class="text-ink-300 mt-2 space-y-1.5 text-sm leading-relaxed">
+        <p class="text-muted-foreground mt-6 text-xs tracking-wide uppercase">Instructions</p>
+        <ul class="text-muted-foreground mt-2 space-y-1.5 text-sm leading-relaxed">
           <li class="flex gap-2.5">
-            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span class="text-primary shrink-0" aria-hidden="true">•</span>
             <span>
-              {{ questions.length }} multiple-choice question{{
-                questions.length === 1 ? '' : 's'
-              }}
+              {{ questions.length }} multiple-choice question{{ questions.length === 1 ? '' : 's' }}
               — all must be answered before submitting
             </span>
           </li>
           <li class="flex gap-2.5">
-            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span class="text-primary shrink-0" aria-hidden="true">•</span>
             <span>
               Score {{ currentLevel.passCriteria }}% or higher to move up to
-              <strong class="text-ink-100">{{ nextLevel?.name }}</strong> immediately
+              <strong class="text-foreground">{{ nextLevel?.name }}</strong> immediately
             </span>
           </li>
           <li class="flex gap-2.5">
-            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span class="text-primary shrink-0" aria-hidden="true">•</span>
             <span>Below {{ currentLevel.passCriteria }}%: your passport stays unchanged</span>
           </li>
           <li class="flex gap-2.5">
-            <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
+            <span class="text-primary shrink-0" aria-hidden="true">•</span>
             <span>
               No time limit, no cap on attempts, and the eLearning track is not a prerequisite
             </span>
           </li>
         </ul>
-        <p class="text-ink-400 mt-6 text-xs tracking-wide uppercase">Track</p>
-        <p class="text-ink-300 mt-2 text-sm">
+        <p class="text-muted-foreground mt-6 text-xs tracking-wide uppercase">Track</p>
+        <p class="text-muted-foreground mt-2 text-sm">
           {{ currentLevel.name }} —
-          <RouterLink :to="{ name: 'user-elearning' }" class="text-passport-400 font-semibold">
+          <RouterLink :to="{ name: 'user-elearning' }" class="text-primary font-semibold">
             study the material first
           </RouterLink>
         </p>
@@ -101,25 +99,25 @@ function start() {
           <div
             v-for="stat in stats"
             :key="stat.label"
-            class="border-ink-700/70 bg-ink-900/40 flex items-start gap-3.5 rounded-2xl border p-5"
+            class="border-border/70 bg-muted/40 flex items-start gap-3.5 rounded-2xl border p-5"
           >
             <component
               :is="stat.icon"
-              class="text-passport-400 mt-0.5 size-8 shrink-0"
+              class="text-primary mt-0.5 size-8 shrink-0"
               :stroke-width="1.5"
             />
             <div class="min-w-0">
-              <p class="text-ink-50 truncate text-xl font-bold">{{ stat.value }}</p>
-              <p class="text-ink-300 text-xs font-medium">{{ stat.label }}</p>
+              <p class="text-foreground truncate text-xl font-bold">{{ stat.value }}</p>
+              <p class="text-muted-foreground text-xs font-medium">{{ stat.label }}</p>
             </div>
           </div>
         </div>
         <EmptyState
-            v-if="!hasPaper"
-            class="mt-6"
-            :icon="CircleQuestionMark"
-            title="This exam has no questions yet"
-            hint="An administrator has not written the paper for this level. Nothing to sit for now — try the eLearning track and come back."
+          v-if="!hasPaper"
+          class="mt-6"
+          :icon="CircleQuestionMark"
+          title="This exam has no questions yet"
+          hint="An administrator has not written the paper for this level. Nothing to sit for now — try the eLearning track and come back."
         />
         <div v-else class="mt-12 mb-7 text-center">
           <BaseButton class="gap-3 rounded-xl px-14 py-5 text-lg" @click="start">

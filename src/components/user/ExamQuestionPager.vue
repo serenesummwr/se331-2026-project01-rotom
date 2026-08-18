@@ -15,10 +15,10 @@ const emit = defineEmits<{ go: [index: number] }>()
       class="size-10 rounded-xl border text-sm font-semibold transition"
       :class="
         number - 1 === current
-          ? 'bg-passport-400 text-accent-fg border-passport-400'
+          ? 'bg-primary text-primary-foreground border-primary'
           : answered[number - 1]
-            ? 'border-passport-400/50 text-passport-300 hover:border-passport-400'
-            : 'border-ink-700 text-ink-400 hover:border-ink-600 hover:text-ink-100'
+            ? 'border-primary/50 text-primary-hover hover:border-primary'
+            : 'border-border text-muted-foreground hover:border-border-strong hover:text-foreground'
       "
       :aria-current="number - 1 === current ? 'step' : undefined"
       :aria-label="`Question ${number}${answered[number - 1] ? ', answered' : ', not answered'}`"

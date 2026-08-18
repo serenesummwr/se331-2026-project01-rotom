@@ -23,17 +23,17 @@ const pages = computed(() => {
   return list
 })
 const buttonClass =
-  'inline-flex items-center gap-1 rounded-lg border border-ink-700 px-3 py-1.5 text-xs font-semibold text-ink-200 transition hover:border-passport-400/60 hover:text-passport-300'
+  'inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-xs font-semibold text-foreground transition hover:border-primary/60 hover:text-primary-hover'
 </script>
 <template>
   <nav
     v-if="totalPages > 1"
-    class="border-ink-700/70 flex flex-wrap items-center justify-between gap-3 border-t px-5 py-4"
+    class="border-border/70 flex flex-wrap items-center justify-between gap-3 border-t px-5 py-4"
     aria-label="Directory pages"
   >
-    <p class="text-ink-500 text-xs">
-      Showing <span class="text-ink-300 font-semibold">{{ from }}–{{ to }}</span> of
-      <span class="text-ink-300 font-semibold">{{ totalItems }}</span>
+    <p class="text-muted-foreground text-xs">
+      Showing <span class="text-muted-foreground font-semibold">{{ from }}–{{ to }}</span> of
+      <span class="text-muted-foreground font-semibold">{{ totalItems }}</span>
     </p>
     <div class="flex items-center gap-1.5">
       <button v-if="!isFirst" type="button" :class="buttonClass" @click="emit('change', page - 1)">
@@ -47,8 +47,8 @@ const buttonClass =
         class="min-w-9 rounded-lg px-3 py-1.5 text-xs font-semibold transition"
         :class="
           number === page
-            ? 'bg-passport-400 text-accent-fg'
-            : 'text-ink-300 hover:bg-ink-700/60 hover:text-ink-50'
+            ? 'bg-primary text-primary-foreground'
+            : 'text-muted-foreground hover:bg-border/60 hover:text-foreground'
         "
         :aria-current="number === page ? 'page' : undefined"
         @click="emit('change', number)"

@@ -22,7 +22,7 @@ function formatWhen(iso: string) {
     title="No exam attempts yet"
     hint="Attempts appear here as soon as an exam is submitted."
   />
-  <ul v-else class="divide-ink-700 -my-3 divide-y">
+  <ul v-else class="divide-border -my-3 divide-y">
     <li
       v-for="attempt in attempts"
       :key="attempt.id"
@@ -30,16 +30,18 @@ function formatWhen(iso: string) {
     >
       <LevelBadge :level="attempt.levelId" size="sm" />
       <span class="min-w-0 flex-1">
-        <span class="text-ink-100 block text-sm font-medium">
+        <span class="text-foreground block text-sm font-medium">
           Level {{ attempt.levelId }} exam
         </span>
-        <span class="text-ink-500 block text-xs">{{ formatWhen(attempt.attemptedAt) }}</span>
+        <span class="text-muted-foreground block text-xs">{{
+          formatWhen(attempt.attemptedAt)
+        }}</span>
       </span>
-      <span class="text-ink-200 text-sm font-semibold tabular-nums">
+      <span class="text-foreground text-sm font-semibold tabular-nums">
         {{ attempt.score }}/{{ attempt.total }}
       </span>
       <span
-        class="rounded-full px-2.5 py-1 text-[11px] font-semibold"
+        class="rounded-full px-2.5 py-1 text-xs font-semibold"
         :class="attempt.passed ? 'bg-success/15 text-success' : 'bg-danger/15 text-danger'"
       >
         {{ attempt.passed ? 'Passed' : 'Failed' }}

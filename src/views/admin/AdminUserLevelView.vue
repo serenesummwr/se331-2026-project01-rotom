@@ -25,7 +25,7 @@ const passed = computed(() => attempts.value.filter((attempt) => attempt.passed)
       <template #actions>
         <RouterLink
           :to="{ name: 'admin-level-detail', params: { id: String(level.id) } }"
-          class="text-passport-400 hover:text-passport-300 inline-flex items-center gap-1 text-xs font-semibold"
+          class="text-primary hover:text-primary-hover inline-flex items-center gap-1 text-xs font-semibold"
         >
           Open level
           <ChevronRight class="size-3.5" :stroke-width="2.5" />
@@ -33,14 +33,17 @@ const passed = computed(() => attempts.value.filter((attempt) => attempt.passed)
       </template>
       <div class="mb-5 flex flex-wrap items-center gap-4">
         <LevelBadge :level="level.id" :name="level.name" size="lg" />
-        <p class="text-ink-500 text-xs">
-          Pass criteria {{ level.passCriteria }}% ·
-          {{ attempts.length }} attempt{{ attempts.length === 1 ? '' : 's' }} on record ·
-          {{ passed }} passed
+        <p class="text-muted-foreground text-xs">
+          Pass criteria {{ level.passCriteria }}% · {{ attempts.length }} attempt{{
+            attempts.length === 1 ? '' : 's'
+          }}
+          on record · {{ passed }} passed
         </p>
       </div>
-      <p class="text-ink-300 mb-5 text-sm leading-relaxed">{{ level.description }}</p>
-      <p class="text-ink-400 mb-2 text-xs tracking-wide uppercase">Benefits at this level</p>
+      <p class="text-muted-foreground mb-5 text-sm leading-relaxed">{{ level.description }}</p>
+      <p class="text-muted-foreground mb-2 text-xs tracking-wide uppercase">
+        Benefits at this level
+      </p>
       <BenefitList :benefits="levelStore.benefitsFor(level.id)" />
     </BaseCard>
     <BaseCard title="Exam history" subtitle="Score, result and the time of every attempt">

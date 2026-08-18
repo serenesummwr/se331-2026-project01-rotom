@@ -28,7 +28,7 @@ const isFinal = computed(() => levelId.value === 4)
   <div v-if="level" class="space-y-5">
     <RouterLink
       :to="{ name: 'admin-levels' }"
-      class="text-ink-400 hover:text-ink-100 inline-flex items-center gap-1.5 text-sm"
+      class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
     >
       <ArrowLeft class="size-4" :stroke-width="1.75" />
       Back to the levels
@@ -42,21 +42,21 @@ const isFinal = computed(() => levelId.value === 4)
       <div class="flex flex-wrap items-start justify-between gap-4">
         <div>
           <LevelBadge :level="level.id" :name="level.name" size="lg" />
-          <h2 class="text-ink-50 mt-3 text-2xl font-semibold">{{ level.name }}</h2>
-          <p class="text-ink-400 mt-1 text-sm">{{ level.tagline }}</p>
+          <h2 class="text-foreground mt-3 text-2xl font-semibold">{{ level.name }}</h2>
+          <p class="text-muted-foreground mt-1 text-sm">{{ level.tagline }}</p>
         </div>
         <dl class="grid grid-cols-2 gap-x-8 gap-y-3 text-right">
           <div>
-            <dt class="text-ink-500 text-[11px] tracking-wide uppercase">Members</dt>
-            <dd class="text-ink-100 text-lg font-semibold">{{ memberCount }}</dd>
+            <dt class="text-muted-foreground text-xs tracking-wide uppercase">Members</dt>
+            <dd class="text-foreground text-lg font-semibold">{{ memberCount }}</dd>
           </div>
           <div>
-            <dt class="text-ink-500 text-[11px] tracking-wide uppercase">Pass criteria</dt>
-            <dd class="text-ink-100 text-lg font-semibold">{{ level.passCriteria }}%</dd>
+            <dt class="text-muted-foreground text-xs tracking-wide uppercase">Pass criteria</dt>
+            <dd class="text-foreground text-lg font-semibold">{{ level.passCriteria }}%</dd>
           </div>
         </dl>
       </div>
-      <p class="text-ink-300 mt-5 text-sm leading-relaxed">{{ level.description }}</p>
+      <p class="text-muted-foreground mt-5 text-sm leading-relaxed">{{ level.description }}</p>
     </BaseCard>
     <div class="grid gap-5 lg:grid-cols-2">
       <BaseCard title="Benefits" subtitle="Shown on the member's profile at this level">

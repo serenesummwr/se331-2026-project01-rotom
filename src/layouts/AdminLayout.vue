@@ -11,7 +11,7 @@ const nav: NavItem[] = [
 const profileLinks: ProfileLink[] = [
   { label: 'Admin overview', to: { name: 'admin-dashboard' } },
   { label: 'Member directory', to: { name: 'admin-users' } },
-    { label: 'Levels and exams', to: { name: 'admin-levels' } },
+  { label: 'Levels and exams', to: { name: 'admin-levels' } },
 ]
 </script>
 <template>

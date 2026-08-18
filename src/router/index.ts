@@ -65,7 +65,7 @@ const router = createRouter({
               component: () => import('@/views/admin/AdminUserInfoView.vue'),
               meta: { title: 'Member detail' },
             },
-             {
+            {
               path: 'level',
               name: 'admin-user-level',
               component: () => import('@/views/admin/AdminUserLevelView.vue'),
@@ -78,7 +78,7 @@ const router = createRouter({
               meta: { title: 'Member detail' },
             },
           ],
-          },
+        },
         {
           path: 'levels',
           name: 'admin-levels',

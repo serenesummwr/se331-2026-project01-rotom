@@ -9,7 +9,7 @@ withDefaults(defineProps<{ title: string; hint?: string; icon?: Component }>(), 
 </script>
 <template>
   <div class="flex flex-col items-center justify-center gap-3 px-6 py-12 text-center">
-    <p class="text-ink-200 text-sm font-semibold">{{ title }}</p>
-    <p v-if="hint" class="text-ink-400 max-w-sm text-xs leading-relaxed">{{ hint }}</p>
+    <p class="text-foreground text-sm font-semibold">{{ title }}</p>
+    <p v-if="hint" class="text-muted-foreground max-w-sm text-xs leading-relaxed">{{ hint }}</p>
   </div>
 </template>

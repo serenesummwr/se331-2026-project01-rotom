@@ -14,9 +14,9 @@ const props = withDefaults(
 const variantClass = computed(
   () =>
     ({
-      primary: 'bg-passport-400 text-accent-fg hover:bg-passport-300 shadow-passport-500/20 shadow',
-      secondary: 'bg-ink-700 text-ink-100 hover:bg-ink-600 border border-ink-600',
-      ghost: 'text-ink-300 hover:text-ink-50 hover:bg-ink-700/60',
+      primary: 'bg-primary text-primary-foreground hover:bg-primary-hover shadow-primary/20 shadow',
+      secondary: 'bg-border text-foreground hover:bg-border-strong border border-border-strong',
+      ghost: 'text-muted-foreground hover:text-foreground hover:bg-border/60',
       danger: 'bg-danger/90 text-white hover:bg-danger',
     })[props.variant],
 )

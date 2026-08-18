@@ -32,44 +32,44 @@ const when = computed(() =>
         >
           {{ attempt.passed ? 'Passed' : 'Not this time' }}
         </p>
-        <h2 class="text-ink-50 mt-2 text-3xl font-bold">
+        <h2 class="text-foreground mt-2 text-3xl font-bold">
           {{ attempt.score }} / {{ attempt.total }}
-          <span class="text-ink-400 text-xl font-semibold">· {{ percent }}%</span>
+          <span class="text-muted-foreground text-xl font-semibold">· {{ percent }}%</span>
         </h2>
-        <p class="text-ink-400 mt-1 text-sm">
+        <p class="text-muted-foreground mt-1 text-sm">
           Level {{ attempt.levelId }} exam · pass criteria {{ passCriteria }}%
         </p>
       </div>
       <LevelBadge v-if="upgradedTo" :level="upgradedTo.id" :name="upgradedTo.name" size="lg" />
     </div>
     <div class="mt-6">
-      <div class="bg-ink-600 relative h-2.5 overflow-hidden rounded-full">
+      <div class="bg-border-strong relative h-2.5 overflow-hidden rounded-full">
         <div
           class="h-full rounded-full"
           :class="attempt.passed ? 'bg-success' : 'bg-danger'"
           :style="{ width: `${percent}%` }"
         />
         <span
-          class="bg-ink-100 absolute inset-y-0 w-0.5"
+          class="bg-foreground absolute inset-y-0 w-0.5"
           :style="{ left: `${passCriteria}%` }"
           :title="`Pass criteria ${passCriteria}%`"
         />
       </div>
-      <p class="text-ink-500 mt-2 text-xs">
+      <p class="text-muted-foreground mt-2 text-xs">
         The marker shows the {{ passCriteria }}% you needed to clear.
       </p>
     </div>
     <p
       v-if="upgradedTo"
-      class="border-success/30 text-ink-100 mt-6 rounded-xl border border-dashed px-4 py-3 text-sm"
+      class="border-success/30 text-foreground mt-6 rounded-xl border border-dashed px-4 py-3 text-sm"
     >
       Your passport now reads <strong>{{ upgradedTo.name }}</strong
       >. The benefits, the services and the eLearning track have already changed.
     </p>
-    <p v-else-if="!attempt.passed" class="text-ink-300 mt-6 text-sm leading-relaxed">
+    <p v-else-if="!attempt.passed" class="text-muted-foreground mt-6 text-sm leading-relaxed">
       Your level is unchanged. Go back through the track for this level and sit the exam again —
       there is no limit on attempts.
     </p>
-    <p class="text-ink-500 mt-6 text-xs">Recorded {{ when }}</p>
+    <p class="text-muted-foreground mt-6 text-xs">Recorded {{ when }}</p>
   </div>
 </template>
