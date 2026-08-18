@@ -16,7 +16,12 @@ const levelStore = useLevelStore()
 const route = useRoute()
 const router = useRouter()
 const navOpen = ref(false)
-// Page titles live on the routes, so the header never has to be told twice.
+const navCollapsed = ref(false)
+
+function toggleCollapsed() {
+  navCollapsed.value = !navCollapsed.value
+}
+
 const title = computed(() => (route.meta.title as string | undefined) ?? 'CAT Passport')
 const subtitle = computed(() => route.meta.subtitle as string | undefined)
 const levelName = computed(() =>
@@ -33,8 +38,14 @@ function logout() {
 </script>
 <template>
   <div v-if="auth.currentUser" class="bg-ink-950 min-h-dvh">
-    <AppSidebar :items="nav" :open="navOpen" @close="navOpen = false" />
-    <div class="lg:ps-64">
+    <AppSidebar
+      :items="nav"
+      :open="navOpen"
+      :collapsed="navCollapsed"
+      @close="navOpen = false"
+      @toggle-collapse="toggleCollapsed"
+    />
+    <div class="transition-[padding] duration-200" :class="navCollapsed ? 'lg:ps-16' : 'lg:ps-64'">
       <AppHeader
         :title="title"
         :subtitle="subtitle"
