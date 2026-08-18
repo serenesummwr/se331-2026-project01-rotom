@@ -8,7 +8,7 @@ This project was developed for the SE331 Component-Based Software Development.
 | --- | --- |
 | GitHub repository | https://github.com/serenesummwr/se331-2026-project01-rotom |
 | Deployed website | https://se331-2026-project01-rotom.vercel.app |
-| Demo video (2–3 minutes) | <YOUTUBE_VIDEO_URL> |
+| Demo video (2–3 minutes) | https://vimeo.com/1219147018?share=copy&fl=sv&fe=ci |
 
 ## Group Information
 
