@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+:root {
+  color-scheme: light;
+
+  --background: #fcfcfb;
+  --surface: #ffffff;
+  --muted: #f2f1ee;
+
+  --border: #e5e3de;
+  --border-strong: #d5d2cb;
+
+  --foreground: #141413;
+  --muted-foreground: #78756c;
+
+  --primary: #cc785c;
+  --primary-hover: #b8664a;
+  --primary-foreground: #141413;
+
+  --success: #4f7a4f;
+  --danger: #b4463c;
+
+  --level-1: #8a8780;
+  --level-2: #a8823f;
+  --level-3: #c2603a;
+  --level-4: #7a2d14;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --background: #141413;
+    --surface: #262624;
+    --muted: #1f1e1d;
+
+    --border: #353431;
+    --border-strong: #4a4945;
+
+    --foreground: #fafaf7;
+    --muted-foreground: #9a978f;
+
+    --primary: #d97757;
+    --primary-hover: #e8916f;
+    --primary-foreground: #141413;
+
+    --success: #6fa76f;
+    --danger: #d97066;
+
+    --level-1: #a3a09a;
+    --level-2: #dcb079;
+    --level-3: #ec8154;
+    --level-4: #d04a26;
+  }
+}
+@theme {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-level-1: var(--level-1);
+  --color-level-2: var(--level-2);
+  --color-level-3: var(--level-3);
+  --color-level-4: var(--level-4);
+  --font-display: 'Outfit Variable', 'Outfit', 'Avenir Next', 'Segoe UI', sans-serif;
+  --text-xs: 0.9375rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 1.0625rem;
+  --text-base: 1.1875rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.25rem;
+  --text-6xl: 4rem;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-background text-foreground antialiased;
+  font-family: var(--font-display);
+}
+:focus-visible {
+  @apply outline-primary outline-2 outline-offset-2;
+}
+#nprogress .bar {
+  background: var(--primary);
+  height: 2px;
+}
+#nprogress .peg {
+  display: none;
+}
+.stamp-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--foreground) 8%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
