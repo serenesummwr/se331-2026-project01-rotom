@@ -34,9 +34,10 @@ const passed = computed(() => attempts.value.filter((attempt) => attempt.passed)
       <div class="mb-5 flex flex-wrap items-center gap-4">
         <LevelBadge :level="level.id" :name="level.name" size="lg" />
         <p class="text-ink-500 text-xs">
-          Pass criteria {{ level.passCriteria }}% ·
-          {{ attempts.length }} attempt{{ attempts.length === 1 ? '' : 's' }} on record ·
-          {{ passed }} passed
+          Pass criteria {{ level.passCriteria }}% · {{ attempts.length }} attempt{{
+            attempts.length === 1 ? '' : 's'
+          }}
+          on record · {{ passed }} passed
         </p>
       </div>
       <p class="text-ink-300 mb-5 text-sm leading-relaxed">{{ level.description }}</p>

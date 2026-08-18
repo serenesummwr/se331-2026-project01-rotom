@@ -17,7 +17,10 @@ function pick(level: Level): LevelEditable {
     passCriteria: level.passCriteria,
   }
 }
-watch(() => props.level.id, () => Object.assign(form, pick(props.level)))
+watch(
+  () => props.level.id,
+  () => Object.assign(form, pick(props.level)),
+)
 const fieldClass =
   'w-full rounded-lg border border-ink-600 bg-ink-900/60 px-3 py-2 text-sm text-ink-100 placeholder:text-ink-500 focus:border-passport-400 focus:outline-none'
 </script>
@@ -32,7 +35,13 @@ const fieldClass =
         <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">
           Pass criteria (%)
         </span>
-        <input v-model.number="form.passCriteria" type="number" min="0" max="100" :class="fieldClass" />
+        <input
+          v-model.number="form.passCriteria"
+          type="number"
+          min="0"
+          max="100"
+          :class="fieldClass"
+        />
       </label>
       <label class="block sm:col-span-2">
         <span class="text-ink-300 mb-1.5 block text-xs tracking-wide uppercase">Tagline</span>

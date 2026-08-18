@@ -66,9 +66,7 @@ function start() {
           <li class="flex gap-2.5">
             <span class="text-passport-400 shrink-0" aria-hidden="true">•</span>
             <span>
-              {{ questions.length }} multiple-choice question{{
-                questions.length === 1 ? '' : 's'
-              }}
+              {{ questions.length }} multiple-choice question{{ questions.length === 1 ? '' : 's' }}
               — all must be answered before submitting
             </span>
           </li>
@@ -115,11 +113,11 @@ function start() {
           </div>
         </div>
         <EmptyState
-            v-if="!hasPaper"
-            class="mt-6"
-            :icon="CircleQuestionMark"
-            title="This exam has no questions yet"
-            hint="An administrator has not written the paper for this level. Nothing to sit for now — try the eLearning track and come back."
+          v-if="!hasPaper"
+          class="mt-6"
+          :icon="CircleQuestionMark"
+          title="This exam has no questions yet"
+          hint="An administrator has not written the paper for this level. Nothing to sit for now — try the eLearning track and come back."
         />
         <div v-else class="mt-12 mb-7 text-center">
           <BaseButton class="gap-3 rounded-xl px-14 py-5 text-lg" @click="start">

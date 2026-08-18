@@ -22,20 +22,14 @@ const ACTIVE_CLASS = 'bg-passport-400/10 text-passport-300'
     class="border-ink-700 bg-shell fixed inset-y-0 start-0 z-40 flex w-64 flex-col border-e transition-[transform,width] duration-200 lg:translate-x-0"
     :class="[open ? 'translate-x-0' : '-translate-x-full', collapsed ? 'lg:w-16' : 'lg:w-64']"
   >
-    <div
-      class="flex h-19 shrink-0 items-center gap-2.5 px-5"
-      :class="collapsed ? 'lg:px-3' : ''"
-    >
-      <div
-        class="flex items-center gap-2.5"
-        :class="collapsed ? 'lg:hidden' : ''"
-      >
+    <div class="flex h-19 shrink-0 items-center gap-2.5 px-5" :class="collapsed ? 'lg:px-3' : ''">
+      <div class="flex items-center gap-2.5" :class="collapsed ? 'lg:hidden' : ''">
         <span class="text-ink-50 leading-tight font-semibold whitespace-nowrap">
           CAT
           <span class="text-ink-400 block text-xs font-normal">Passport</span>
         </span>
       </div>
-            <button
+      <button
         type="button"
         class="text-ink-400 hover:bg-shell-hover hover:text-ink-100 ms-auto hidden rounded-lg p-3 transition lg:block"
         :class="collapsed ? 'lg:ms-0' : ''"

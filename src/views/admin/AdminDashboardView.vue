@@ -110,7 +110,6 @@ const recentAttempts = computed(() =>
               class="bg-ink-700 size-9 rounded-lg object-cover"
             />
             <span class="min-w-0 flex-1">
-
               <RouterLink
                 v-if="attempt.user && router.hasRoute('admin-user-level')"
                 :to="{ name: 'admin-user-level', params: { id: String(attempt.user.id) } }"
