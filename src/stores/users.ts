@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { users as seedUsers } from '@/data/users'
-import { provinces } from '@/data/provinces'
 import type { LevelId, User, UserEditable, UserFilterState, UserRegistration } from '@/types'
 export const PAGE_SIZE = 8
 
 export const useUserStore = defineStore('users', () => {
-  const users = ref<User[]>(seedUsers.map((user) => ({ ...user })))
+  const users = ref<User[]>([])
   const filters = ref<UserFilterState>({ name: '', level: 'all', province: 'all' })
   const page = ref(1)
   const memberList = computed(() => users.value.filter((user) => user.role === 'user'))
@@ -35,7 +33,9 @@ export const useUserStore = defineStore('users', () => {
     const start = (page.value - 1) * PAGE_SIZE
     return filteredUsers.value.slice(start, start + PAGE_SIZE)
   })
-  const provinceOptions = computed(() => provinces)
+  const provinceOptions = computed(() =>
+    [...new Set(memberList.value.map((user) => user.province))].sort((a, b) => a.localeCompare(b)),
+  )
   const levelCounts = computed(() => {
     const counts: Record<LevelId, number> = { 1: 0, 2: 0, 3: 0, 4: 0 }
     for (const user of memberList.value) counts[user.level] = (counts[user.level] ?? 0) + 1
@@ -53,6 +53,11 @@ export const useUserStore = defineStore('users', () => {
   }
   function setPage(value: number) {
     page.value = Math.min(Math.max(1, Math.trunc(value) || 1), totalPages.value)
+  }
+
+  function hydrate(nextUsers: User[]) {
+    users.value = nextUsers.map((user) => ({ ...user }))
+    resetFilters()
   }
 
   function register(draft: UserRegistration): User {
@@ -108,6 +113,7 @@ export const useUserStore = defineStore('users', () => {
     provinceOptions,
     levelCounts,
     activeCount,
+    hydrate,
     setFilters,
     resetFilters,
     setPage,

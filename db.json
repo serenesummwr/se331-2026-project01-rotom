@@ -1,0 +1,1789 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "role": "admin",
+      "firstName": "Kanya",
+      "lastName": "Rattanakosin",
+      "province": "Bangkok",
+      "email": "admin@catpassport.dev",
+      "phone": "081 107 1013",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=admin&backgroundColor=1f2540,2a3150,343b58",
+      "level": 4,
+      "active": true,
+      "joinedAt": "2024-01-08T09:00:00.000Z",
+      "bio": "Passport administrator. Keeps the levels, the exams and the member directory in order."
+    },
+    {
+      "id": 2,
+      "username": "user1",
+      "role": "user",
+      "firstName": "Tanawat",
+      "lastName": "Srisuk",
+      "province": "Chiang Mai",
+      "email": "user1@catpassport.dev",
+      "phone": "082 114 1026",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=user1&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-06-02T09:00:00.000Z",
+      "bio": "Just opened the passport and working through the Level 1 track."
+    },
+    {
+      "id": 3,
+      "username": "user2",
+      "role": "user",
+      "firstName": "Ploy",
+      "lastName": "Wattanakul",
+      "province": "Bangkok",
+      "email": "user2@catpassport.dev",
+      "phone": "083 121 1039",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=user2&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2026-03-14T09:00:00.000Z",
+      "bio": "Level 2 since March. Mostly here for the shared workspaces."
+    },
+    {
+      "id": 4,
+      "username": "nira.k",
+      "role": "user",
+      "firstName": "Nira",
+      "lastName": "Kittipong",
+      "province": "Phuket",
+      "email": "nirak@catpassport.dev",
+      "phone": "084 128 1052",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=nira.k&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-11-21T09:00:00.000Z",
+      "bio": "Runs a small dive shop and automates the bookings with Service."
+    },
+    {
+      "id": 5,
+      "username": "somchai.p",
+      "role": "user",
+      "firstName": "Somchai",
+      "lastName": "Prasert",
+      "province": "Khon Kaen",
+      "email": "somchaip@catpassport.dev",
+      "phone": "085 135 1065",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=somchai.p&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2025-09-05T09:00:00.000Z",
+      "bio": "Agricultural co-op coordinator."
+    },
+    {
+      "id": 6,
+      "username": "malee.j",
+      "role": "user",
+      "firstName": "Malee",
+      "lastName": "Jantana",
+      "province": "Chiang Rai",
+      "email": "maleej@catpassport.dev",
+      "phone": "086 142 1078",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=malee.j&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-07-19T09:00:00.000Z",
+      "bio": "New member, still on the first eLearning video."
+    },
+    {
+      "id": 7,
+      "username": "apinya.s",
+      "role": "user",
+      "firstName": "Apinya",
+      "lastName": "Sombat",
+      "province": "Songkhla",
+      "email": "apinyas@catpassport.dev",
+      "phone": "087 149 1091",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=apinya.s&backgroundColor=1f2540,2a3150,343b58",
+      "level": 4,
+      "active": true,
+      "joinedAt": "2024-05-30T09:00:00.000Z",
+      "bio": "Level 4 and a regular at the product council."
+    },
+    {
+      "id": 8,
+      "username": "krit.t",
+      "role": "user",
+      "firstName": "Krit",
+      "lastName": "Thongchai",
+      "province": "Chonburi",
+      "email": "kritt@catpassport.dev",
+      "phone": "088 156 1104",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=krit.t&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": false,
+      "joinedAt": "2025-02-11T09:00:00.000Z",
+      "bio": "Account suspended pending a quota review."
+    },
+    {
+      "id": 9,
+      "username": "siriporn.w",
+      "role": "user",
+      "firstName": "Siriporn",
+      "lastName": "Wongwan",
+      "province": "Lampang",
+      "email": "siripornw@catpassport.dev",
+      "phone": "089 163 1117",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=siriporn.w&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2025-12-02T09:00:00.000Z",
+      "bio": "Teaches the Service basics at the local community centre."
+    },
+    {
+      "id": 10,
+      "username": "daran.b",
+      "role": "user",
+      "firstName": "Daran",
+      "lastName": "Boonmee",
+      "province": "Nakhon Ratchasima",
+      "email": "daranb@catpassport.dev",
+      "phone": "080 170 1130",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=daran.b&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-08-01T09:00:00.000Z",
+      "bio": "Signed up last week."
+    },
+    {
+      "id": 11,
+      "username": "ratana.c",
+      "role": "user",
+      "firstName": "Ratana",
+      "lastName": "Chaiyaporn",
+      "province": "Phra Nakhon Si Ayutthaya",
+      "email": "ratanac@catpassport.dev",
+      "phone": "081 177 1143",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=ratana.c&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-04-17T09:00:00.000Z",
+      "bio": "Heritage tour operator, heavy analytics user."
+    },
+    {
+      "id": 12,
+      "username": "wichai.n",
+      "role": "user",
+      "firstName": "Wichai",
+      "lastName": "Nakarin",
+      "province": "Bangkok",
+      "email": "wichain@catpassport.dev",
+      "phone": "082 184 1156",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=wichai.n&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2025-10-09T09:00:00.000Z",
+      "bio": "Logistics planner."
+    },
+    {
+      "id": 13,
+      "username": "pimchanok.l",
+      "role": "user",
+      "firstName": "Pimchanok",
+      "lastName": "Laohakul",
+      "province": "Chiang Mai",
+      "email": "pimchanokl@catpassport.dev",
+      "phone": "083 191 1169",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=pimchanok.l&backgroundColor=1f2540,2a3150,343b58",
+      "level": 4,
+      "active": true,
+      "joinedAt": "2024-08-23T09:00:00.000Z",
+      "bio": "Was in the very first Level 4 cohort."
+    },
+    {
+      "id": 14,
+      "username": "anon.r",
+      "role": "user",
+      "firstName": "Anon",
+      "lastName": "Ruangdet",
+      "province": "Phuket",
+      "email": "anonr@catpassport.dev",
+      "phone": "084 198 1182",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=anon.r&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": false,
+      "joinedAt": "2026-05-06T09:00:00.000Z",
+      "bio": "Deactivated after repeated failed exam attempts from a shared account."
+    },
+    {
+      "id": 15,
+      "username": "kanokwan.s",
+      "role": "user",
+      "firstName": "Kanokwan",
+      "lastName": "Suwannee",
+      "province": "Khon Kaen",
+      "email": "kanokwans@catpassport.dev",
+      "phone": "085 205 1195",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=kanokwan.s&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-06-28T09:00:00.000Z",
+      "bio": "Data analyst at a rice exporter."
+    },
+    {
+      "id": 16,
+      "username": "thiti.m",
+      "role": "user",
+      "firstName": "Thiti",
+      "lastName": "Maneerat",
+      "province": "Chonburi",
+      "email": "thitim@catpassport.dev",
+      "phone": "086 212 1208",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=thiti.m&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2026-01-15T09:00:00.000Z",
+      "bio": "Runs the weekend maker market."
+    },
+    {
+      "id": 17,
+      "username": "jira.p",
+      "role": "user",
+      "firstName": "Jira",
+      "lastName": "Pongsakorn",
+      "province": "Songkhla",
+      "email": "jirap@catpassport.dev",
+      "phone": "087 219 1221",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=jira.p&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-07-03T09:00:00.000Z",
+      "bio": "Fisheries student."
+    },
+    {
+      "id": 18,
+      "username": "benja.k",
+      "role": "user",
+      "firstName": "Benja",
+      "lastName": "Kraisorn",
+      "province": "Lampang",
+      "email": "benjak@catpassport.dev",
+      "phone": "088 226 1234",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=benja.k&backgroundColor=1f2540,2a3150,343b58",
+      "level": 4,
+      "active": true,
+      "joinedAt": "2024-11-11T09:00:00.000Z",
+      "bio": "Ceramics studio owner. Uses the concierge desk constantly."
+    },
+    {
+      "id": 19,
+      "username": "natcha.v",
+      "role": "user",
+      "firstName": "Natcha",
+      "lastName": "Voravit",
+      "province": "Bangkok",
+      "email": "natchav@catpassport.dev",
+      "phone": "089 233 1247",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=natcha.v&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-03-08T09:00:00.000Z",
+      "bio": "Product designer."
+    },
+    {
+      "id": 20,
+      "username": "ekkarat.d",
+      "role": "user",
+      "firstName": "Ekkarat",
+      "lastName": "Damrongchai",
+      "province": "Chiang Rai",
+      "email": "ekkaratd@catpassport.dev",
+      "phone": "080 240 1260",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=ekkarat.d&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2025-08-14T09:00:00.000Z",
+      "bio": "Coffee cooperative, exports to three countries."
+    },
+    {
+      "id": 21,
+      "username": "sunisa.t",
+      "role": "user",
+      "firstName": "Sunisa",
+      "lastName": "Trakulwit",
+      "province": "Nakhon Ratchasima",
+      "email": "sunisat@catpassport.dev",
+      "phone": "081 247 1273",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=sunisa.t&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-06-25T09:00:00.000Z",
+      "bio": "Started the Level 1 track in June."
+    },
+    {
+      "id": 22,
+      "username": "phong.a",
+      "role": "user",
+      "firstName": "Phong",
+      "lastName": "Aroonrat",
+      "province": "Phra Nakhon Si Ayutthaya",
+      "email": "phonga@catpassport.dev",
+      "phone": "082 254 1286",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=phong.a&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": false,
+      "joinedAt": "2025-01-29T09:00:00.000Z",
+      "bio": "Deactivated at the member request while travelling."
+    },
+    {
+      "id": 23,
+      "username": "chalida.n",
+      "role": "user",
+      "firstName": "Chalida",
+      "lastName": "Nopparat",
+      "province": "Chiang Mai",
+      "email": "chalidan@catpassport.dev",
+      "phone": "083 261 1299",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=chalida.n&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2025-11-04T09:00:00.000Z",
+      "bio": "Runs a guesthouse near the old city."
+    },
+    {
+      "id": 24,
+      "username": "veera.s",
+      "role": "user",
+      "firstName": "Veera",
+      "lastName": "Sakdiyakorn",
+      "province": "Phuket",
+      "email": "veeras@catpassport.dev",
+      "phone": "084 268 1312",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=veera.s&backgroundColor=1f2540,2a3150,343b58",
+      "level": 4,
+      "active": true,
+      "joinedAt": "2024-03-19T09:00:00.000Z",
+      "bio": "Marine logistics. One of the heaviest Service users on the platform."
+    },
+    {
+      "id": 25,
+      "username": "orn.k",
+      "role": "user",
+      "firstName": "Ornanong",
+      "lastName": "Kesorn",
+      "province": "Khon Kaen",
+      "email": "ornk@catpassport.dev",
+      "phone": "085 275 1325",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=orn.k&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-07-28T09:00:00.000Z",
+      "bio": "Joined after a workshop."
+    },
+    {
+      "id": 26,
+      "username": "panu.w",
+      "role": "user",
+      "firstName": "Panu",
+      "lastName": "Wisetsiri",
+      "province": "Songkhla",
+      "email": "panuw@catpassport.dev",
+      "phone": "086 282 1338",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=panu.w&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2026-02-06T09:00:00.000Z",
+      "bio": "Runs the rubber trader association portal."
+    },
+    {
+      "id": 27,
+      "username": "arisa.m",
+      "role": "user",
+      "firstName": "Arisa",
+      "lastName": "Meechai",
+      "province": "Bangkok",
+      "email": "arisam@catpassport.dev",
+      "phone": "087 289 1351",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=arisa.m&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-05-22T09:00:00.000Z",
+      "bio": "Fintech compliance officer."
+    },
+    {
+      "id": 28,
+      "username": "kittipong.r",
+      "role": "user",
+      "firstName": "Kittipong",
+      "lastName": "Rojjanaporn",
+      "province": "Chonburi",
+      "email": "kittipongr@catpassport.dev",
+      "phone": "088 296 1364",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=kittipong.r&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": true,
+      "joinedAt": "2026-08-09T09:00:00.000Z",
+      "bio": "The newest member in the directory."
+    },
+    {
+      "id": 29,
+      "username": "suda.c",
+      "role": "user",
+      "firstName": "Suda",
+      "lastName": "Chaimongkol",
+      "province": "Lampang",
+      "email": "sudac@catpassport.dev",
+      "phone": "089 303 1377",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=suda.c&backgroundColor=1f2540,2a3150,343b58",
+      "level": 4,
+      "active": true,
+      "joinedAt": "2024-09-27T09:00:00.000Z",
+      "bio": "Textile exporter, on the product council since 2025."
+    },
+    {
+      "id": 30,
+      "username": "nopporn.t",
+      "role": "user",
+      "firstName": "Nopporn",
+      "lastName": "Techasarin",
+      "province": "Chiang Rai",
+      "email": "noppornt@catpassport.dev",
+      "phone": "080 310 1390",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=nopporn.t&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2025-07-12T09:00:00.000Z",
+      "bio": "Highland farming project lead."
+    },
+    {
+      "id": 31,
+      "username": "wanida.p",
+      "role": "user",
+      "firstName": "Wanida",
+      "lastName": "Puangsri",
+      "province": "Nakhon Ratchasima",
+      "email": "wanidap@catpassport.dev",
+      "phone": "081 317 1403",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=wanida.p&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-09-30T09:00:00.000Z",
+      "bio": "Regional hospital systems coordinator."
+    },
+    {
+      "id": 32,
+      "username": "sarawut.k",
+      "role": "user",
+      "firstName": "Sarawut",
+      "lastName": "Kanjanapak",
+      "province": "Phra Nakhon Si Ayutthaya",
+      "email": "sarawutk@catpassport.dev",
+      "phone": "082 324 1416",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=sarawut.k&backgroundColor=1f2540,2a3150,343b58",
+      "level": 1,
+      "active": false,
+      "joinedAt": "2026-04-02T09:00:00.000Z",
+      "bio": "Deactivated after a billing dispute."
+    },
+    {
+      "id": 33,
+      "username": "preeda.h",
+      "role": "user",
+      "firstName": "Preeda",
+      "lastName": "Hemchai",
+      "province": "Phuket",
+      "email": "preedah@catpassport.dev",
+      "phone": "083 331 1429",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=preeda.h&backgroundColor=1f2540,2a3150,343b58",
+      "level": 2,
+      "active": true,
+      "joinedAt": "2026-01-23T09:00:00.000Z",
+      "bio": "Boat charter operator."
+    },
+    {
+      "id": 34,
+      "username": "yupin.s",
+      "role": "user",
+      "firstName": "Yupin",
+      "lastName": "Saetang",
+      "province": "Bangkok",
+      "email": "yupins@catpassport.dev",
+      "phone": "084 338 1442",
+      "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=yupin.s&backgroundColor=1f2540,2a3150,343b58",
+      "level": 3,
+      "active": true,
+      "joinedAt": "2025-10-27T09:00:00.000Z",
+      "bio": "Runs the volunteer network in Bang Rak."
+    }
+  ],
+  "levels": [
+    {
+      "id": 1,
+      "name": "Level 1",
+      "tagline": "Where every passport starts",
+      "description": "Every member begins here right after registering. Level 1 unlocks the basics of the Service and the Level 1 eLearning track that prepares you for the first exam.",
+      "passCriteria": 60,
+      "accent": "level-1"
+    },
+    {
+      "id": 2,
+      "name": "Level 2",
+      "tagline": "Faster lanes, longer reach",
+      "description": "Level 2 members have proved they know the fundamentals. The service quota grows, support answers faster, and the Level 2 track opens up the collaboration tools.",
+      "passCriteria": 65,
+      "accent": "level-2"
+    },
+    {
+      "id": 3,
+      "name": "Level 3",
+      "tagline": "You steer, we clear the way",
+      "description": "Level 3 members run their own workspaces. Priority routing, analytics and the partner network come with this level, together with a considerably harder exam.",
+      "passCriteria": 70,
+      "accent": "level-3"
+    },
+    {
+      "id": 4,
+      "name": "Level 4",
+      "tagline": "The top of the passport",
+      "description": "The final level of the CAT Passport. Level 4 members get everything the service offers, a dedicated contact, and an invitation to shape what ships next.",
+      "passCriteria": 75,
+      "accent": "level-4"
+    }
+  ],
+  "benefits": [
+    {
+      "id": 1,
+      "levelId": 1,
+      "title": "Welcome passport",
+      "description": "A digital passport with your Level 1 stamp and member number.",
+      "icon": "stamp"
+    },
+    {
+      "id": 2,
+      "levelId": 1,
+      "title": "Community access",
+      "description": "Read and post in the member community forums.",
+      "icon": "message-square"
+    },
+    {
+      "id": 3,
+      "levelId": 1,
+      "title": "Starter eLearning",
+      "description": "The full Level 1 learning track, free and unlimited.",
+      "icon": "video"
+    },
+    {
+      "id": 4,
+      "levelId": 1,
+      "title": "Monthly digest",
+      "description": "A monthly summary of what changed in the Service.",
+      "icon": "newspaper"
+    },
+    {
+      "id": 5,
+      "levelId": 2,
+      "title": "Priority support",
+      "description": "Your tickets are answered within one business day.",
+      "icon": "zap"
+    },
+    {
+      "id": 6,
+      "levelId": 2,
+      "title": "Double quota",
+      "description": "Twice the monthly Service quota of a Level 1 member.",
+      "icon": "trending-up"
+    },
+    {
+      "id": 7,
+      "levelId": 2,
+      "title": "Level 2 stamp",
+      "description": "The Level 2 stamp on your passport and profile badge shelf.",
+      "icon": "award"
+    },
+    {
+      "id": 8,
+      "levelId": 2,
+      "title": "Workshop seats",
+      "description": "Two seats per quarter in the live online workshops.",
+      "icon": "ticket"
+    },
+    {
+      "id": 9,
+      "levelId": 3,
+      "title": "Priority routing",
+      "description": "Your requests jump the queue across every Service.",
+      "icon": "rocket"
+    },
+    {
+      "id": 10,
+      "levelId": 3,
+      "title": "Analytics console",
+      "description": "Usage dashboards and exportable reports for your workspace.",
+      "icon": "chart-column"
+    },
+    {
+      "id": 11,
+      "levelId": 3,
+      "title": "Partner network",
+      "description": "Introductions to the partner network and its member rates.",
+      "icon": "handshake"
+    },
+    {
+      "id": 12,
+      "levelId": 3,
+      "title": "Early access",
+      "description": "Try new Service features one release before everyone else.",
+      "icon": "flask-conical"
+    },
+    {
+      "id": 13,
+      "levelId": 4,
+      "title": "Dedicated contact",
+      "description": "A named contact who knows your account by heart.",
+      "icon": "phone"
+    },
+    {
+      "id": 14,
+      "levelId": 4,
+      "title": "Unlimited quota",
+      "description": "No monthly ceiling on any part of the Service.",
+      "icon": "infinity"
+    },
+    {
+      "id": 15,
+      "levelId": 4,
+      "title": "Product council",
+      "description": "A standing seat in the quarterly product council.",
+      "icon": "vote"
+    },
+    {
+      "id": 16,
+      "levelId": 4,
+      "title": "Level 4 gold stamp",
+      "description": "The gold stamp — the last one the passport has to give.",
+      "icon": "crown"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "levelId": 1,
+      "name": "Service Basic Lookup",
+      "description": "Look up any record in the Service directory, 50 times a month.",
+      "category": "Core"
+    },
+    {
+      "id": 2,
+      "levelId": 1,
+      "name": "Community Forum",
+      "description": "Ask questions and answer other members.",
+      "category": "Community"
+    },
+    {
+      "id": 3,
+      "levelId": 1,
+      "name": "Passport Wallet",
+      "description": "Keep your stamps and certificates in one place.",
+      "category": "Core"
+    },
+    {
+      "id": 4,
+      "levelId": 2,
+      "name": "Service Bulk Lookup",
+      "description": "Batch up to 500 records in a single request.",
+      "category": "Core"
+    },
+    {
+      "id": 5,
+      "levelId": 2,
+      "name": "Shared Workspaces",
+      "description": "Invite up to five people into a shared workspace.",
+      "category": "Collaboration"
+    },
+    {
+      "id": 6,
+      "levelId": 2,
+      "name": "Scheduled Reports",
+      "description": "Weekly reports delivered to your inbox automatically.",
+      "category": "Insight"
+    },
+    {
+      "id": 7,
+      "levelId": 3,
+      "name": "Service Automations",
+      "description": "Trigger Service actions from your own webhooks.",
+      "category": "Automation"
+    },
+    {
+      "id": 8,
+      "levelId": 3,
+      "name": "Analytics Console",
+      "description": "Live dashboards over everything your workspace does.",
+      "category": "Insight"
+    },
+    {
+      "id": 9,
+      "levelId": 3,
+      "name": "Partner Directory",
+      "description": "Browse and contact the vetted partner network.",
+      "category": "Network"
+    },
+    {
+      "id": 10,
+      "levelId": 3,
+      "name": "Sandbox Environment",
+      "description": "A throwaway environment to try things safely.",
+      "category": "Automation"
+    },
+    {
+      "id": 11,
+      "levelId": 4,
+      "name": "Service Unlimited",
+      "description": "Every Service endpoint, no quota, no throttle.",
+      "category": "Core"
+    },
+    {
+      "id": 12,
+      "levelId": 4,
+      "name": "Concierge Desk",
+      "description": "A dedicated human who picks up on the first ring.",
+      "category": "Support"
+    },
+    {
+      "id": 13,
+      "levelId": 4,
+      "name": "Custom Integrations",
+      "description": "We build the integration your team needs.",
+      "category": "Automation"
+    },
+    {
+      "id": 14,
+      "levelId": 4,
+      "name": "Council Seat",
+      "description": "Vote on the Service roadmap every quarter.",
+      "category": "Network"
+    }
+  ],
+  "questions": [
+    {
+      "id": 101,
+      "levelId": 1,
+      "question": "What happens the moment you register for the CAT Passport?",
+      "choices": [
+        "You are placed at Level 1 and can use the Service straight away",
+        "You wait for an administrator to approve the account",
+        "You are asked to pick any level you like",
+        "You start at Level 4 and work downwards"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 102,
+      "levelId": 1,
+      "question": "How does a member move from one level to the next?",
+      "choices": [
+        "By staying registered for six months",
+        "By passing the exam for their current level",
+        "By inviting three other members",
+        "By asking an administrator directly"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": 103,
+      "levelId": 1,
+      "question": "How many levels does the CAT Passport have?",
+      "choices": [
+        "Three",
+        "Four",
+        "Five",
+        "As many as you unlock"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": 104,
+      "levelId": 1,
+      "question": "Do you have to finish the eLearning content before taking the exam?",
+      "choices": [
+        "Yes, the exam stays locked until every video is watched",
+        "Yes, but only for Level 1",
+        "No, the exam is always available — the content is there to help you pass",
+        "No, but a failed attempt locks you out for a week"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": 105,
+      "levelId": 1,
+      "question": "What does a Level 1 member get out of the passport wallet?",
+      "choices": [
+        "A place to keep the stamps and certificates they have earned",
+        "A monthly cash rebate",
+        "A physical card posted to their address",
+        "Nothing until they reach Level 2"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 201,
+      "levelId": 2,
+      "question": "A Level 2 member wants to process 400 records in one go. Which service covers that?",
+      "choices": [
+        "Service Basic Lookup",
+        "Service Bulk Lookup",
+        "Service Automations",
+        "Service Unlimited"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": 202,
+      "levelId": 2,
+      "question": "How many people can a Level 2 member invite into a shared workspace?",
+      "choices": [
+        "Two",
+        "Five",
+        "Ten",
+        "No limit"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": 203,
+      "levelId": 2,
+      "question": "What is the promised response time on a Level 2 support ticket?",
+      "choices": [
+        "Within one business day",
+        "Within one hour",
+        "Within one week",
+        "There is no promise at this level"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 204,
+      "levelId": 2,
+      "question": "Which of these is NOT a Level 2 benefit?",
+      "choices": [
+        "Double quota",
+        "Workshop seats",
+        "Priority support",
+        "A dedicated contact"
+      ],
+      "answerIndex": 3
+    },
+    {
+      "id": 205,
+      "levelId": 2,
+      "question": "What arrives in your inbox with Scheduled Reports?",
+      "choices": [
+        "A weekly report generated automatically",
+        "A daily invoice",
+        "A copy of every request you made",
+        "Nothing — you have to download reports yourself"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 301,
+      "levelId": 3,
+      "question": "What does the Level 3 sandbox environment exist for?",
+      "choices": [
+        "Trying changes safely without touching real data",
+        "Storing archived reports",
+        "Running the exam offline",
+        "Hosting the member community forum"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 302,
+      "levelId": 3,
+      "question": "Service Automations are triggered by…",
+      "choices": [
+        "A monthly schedule only",
+        "Your own webhooks",
+        "A support ticket",
+        "The admin console"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": 303,
+      "levelId": 3,
+      "question": "What does \"early access\" give a Level 3 member?",
+      "choices": [
+        "New features one release before everyone else",
+        "A discount on the next renewal",
+        "The Level 4 gold stamp in advance",
+        "An extra exam attempt"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 304,
+      "levelId": 3,
+      "question": "Priority routing means your requests…",
+      "choices": [
+        "Are queued overnight and processed in bulk",
+        "Skip ahead of lower levels across every Service",
+        "Are handled by a different data centre",
+        "Cost less per call"
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": 305,
+      "levelId": 3,
+      "question": "Which level introduces the partner directory?",
+      "choices": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": 401,
+      "levelId": 4,
+      "question": "What does a Level 4 member do at the quarterly product council?",
+      "choices": [
+        "Votes on what the Service builds next",
+        "Renews their membership",
+        "Re-sits the Level 3 exam",
+        "Nominates new administrators"
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": 402,
+      "levelId": 4,
+      "question": "What is the quota on Service Unlimited?",
+      "choices": [
+        "10,000 calls a month",
+        "100,000 calls a month",
+        "There is none",
+        "One per second"
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": 403,
+      "levelId": 4,
+      "question": "Level 4 is the last level of the passport. What comes after it?",
+      "choices": [
+        "Nothing — the passport is complete",
+        "A hidden fifth level",
+        "The account resets to Level 1",
+        "A separate partner programme"
+      ],
+      "answerIndex": 0
+    }
+  ],
+  "examHistory": [
+    {
+      "id": 66,
+      "userId": 28,
+      "levelId": 1,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-08-30T08:27:00.000Z"
+    },
+    {
+      "id": 58,
+      "userId": 25,
+      "levelId": 1,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-08-18T08:27:00.000Z"
+    },
+    {
+      "id": 47,
+      "userId": 21,
+      "levelId": 1,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-07-16T08:27:00.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 3,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-05-08T10:25:00.000Z"
+    },
+    {
+      "id": 61,
+      "userId": 26,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-04-08T08:07:00.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2026-04-04T08:27:00.000Z"
+    },
+    {
+      "id": 75,
+      "userId": 33,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-03-19T10:25:00.000Z"
+    },
+    {
+      "id": 37,
+      "userId": 16,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-03-11T10:25:00.000Z"
+    },
+    {
+      "id": 60,
+      "userId": 26,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2026-03-05T06:09:00.000Z"
+    },
+    {
+      "id": 59,
+      "userId": 26,
+      "levelId": 1,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-02-27T08:27:00.000Z"
+    },
+    {
+      "id": 74,
+      "userId": 33,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2026-02-13T08:27:00.000Z"
+    },
+    {
+      "id": 36,
+      "userId": 16,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2026-02-05T08:27:00.000Z"
+    },
+    {
+      "id": 23,
+      "userId": 9,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-02-01T08:07:00.000Z"
+    },
+    {
+      "id": 79,
+      "userId": 34,
+      "levelId": 3,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2026-01-30T10:05:00.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 4,
+      "levelId": 2,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2026-01-15T10:25:00.000Z"
+    },
+    {
+      "id": 53,
+      "userId": 23,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-12-29T10:25:00.000Z"
+    },
+    {
+      "id": 22,
+      "userId": 9,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-12-29T06:09:00.000Z"
+    },
+    {
+      "id": 78,
+      "userId": 34,
+      "levelId": 2,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-12-27T08:07:00.000Z"
+    },
+    {
+      "id": 21,
+      "userId": 9,
+      "levelId": 1,
+      "score": 1,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-12-23T08:27:00.000Z"
+    },
+    {
+      "id": 77,
+      "userId": 34,
+      "levelId": 2,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-12-21T10:25:00.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 4,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-12-12T08:27:00.000Z"
+    },
+    {
+      "id": 52,
+      "userId": 23,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-11-25T08:27:00.000Z"
+    },
+    {
+      "id": 73,
+      "userId": 31,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-11-24T10:25:00.000Z"
+    },
+    {
+      "id": 76,
+      "userId": 34,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-11-17T08:27:00.000Z"
+    },
+    {
+      "id": 11,
+      "userId": 5,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-11-05T08:07:00.000Z"
+    },
+    {
+      "id": 27,
+      "userId": 12,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-10-30T08:27:00.000Z"
+    },
+    {
+      "id": 72,
+      "userId": 31,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-10-21T08:27:00.000Z"
+    },
+    {
+      "id": 46,
+      "userId": 20,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-10-14T08:07:00.000Z"
+    },
+    {
+      "id": 10,
+      "userId": 5,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-10-02T06:09:00.000Z"
+    },
+    {
+      "id": 9,
+      "userId": 5,
+      "levelId": 1,
+      "score": 1,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-09-26T08:27:00.000Z"
+    },
+    {
+      "id": 45,
+      "userId": 20,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-09-10T06:09:00.000Z"
+    },
+    {
+      "id": 44,
+      "userId": 20,
+      "levelId": 1,
+      "score": 1,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-09-04T08:27:00.000Z"
+    },
+    {
+      "id": 35,
+      "userId": 15,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-09-03T06:49:00.000Z"
+    },
+    {
+      "id": 34,
+      "userId": 15,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-08-28T08:07:00.000Z"
+    },
+    {
+      "id": 65,
+      "userId": 27,
+      "levelId": 3,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-08-25T10:05:00.000Z"
+    },
+    {
+      "id": 71,
+      "userId": 30,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-08-08T06:09:00.000Z"
+    },
+    {
+      "id": 70,
+      "userId": 30,
+      "levelId": 1,
+      "score": 1,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-08-02T08:27:00.000Z"
+    },
+    {
+      "id": 33,
+      "userId": 15,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-07-25T06:09:00.000Z"
+    },
+    {
+      "id": 64,
+      "userId": 27,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-07-22T08:07:00.000Z"
+    },
+    {
+      "id": 32,
+      "userId": 15,
+      "levelId": 1,
+      "score": 1,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-07-19T08:27:00.000Z"
+    },
+    {
+      "id": 63,
+      "userId": 27,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-06-18T06:09:00.000Z"
+    },
+    {
+      "id": 26,
+      "userId": 11,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-06-17T08:07:00.000Z"
+    },
+    {
+      "id": 62,
+      "userId": 27,
+      "levelId": 1,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-06-12T08:27:00.000Z"
+    },
+    {
+      "id": 25,
+      "userId": 11,
+      "levelId": 2,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-06-11T10:25:00.000Z"
+    },
+    {
+      "id": 20,
+      "userId": 8,
+      "levelId": 3,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-05-17T10:05:00.000Z"
+    },
+    {
+      "id": 24,
+      "userId": 11,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-05-08T08:27:00.000Z"
+    },
+    {
+      "id": 43,
+      "userId": 19,
+      "levelId": 2,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-05-08T08:07:00.000Z"
+    },
+    {
+      "id": 51,
+      "userId": 22,
+      "levelId": 3,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-05-04T10:05:00.000Z"
+    },
+    {
+      "id": 19,
+      "userId": 8,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-04-13T08:07:00.000Z"
+    },
+    {
+      "id": 18,
+      "userId": 8,
+      "levelId": 2,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-04-07T10:25:00.000Z"
+    },
+    {
+      "id": 42,
+      "userId": 19,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-04-04T06:09:00.000Z"
+    },
+    {
+      "id": 50,
+      "userId": 22,
+      "levelId": 2,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-03-31T08:07:00.000Z"
+    },
+    {
+      "id": 41,
+      "userId": 19,
+      "levelId": 1,
+      "score": 1,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-03-29T08:27:00.000Z"
+    },
+    {
+      "id": 49,
+      "userId": 22,
+      "levelId": 2,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2025-03-25T10:25:00.000Z"
+    },
+    {
+      "id": 17,
+      "userId": 8,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-03-04T08:27:00.000Z"
+    },
+    {
+      "id": 48,
+      "userId": 22,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-02-19T08:27:00.000Z"
+    },
+    {
+      "id": 40,
+      "userId": 18,
+      "levelId": 3,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-02-08T04:23:00.000Z"
+    },
+    {
+      "id": 39,
+      "userId": 18,
+      "levelId": 2,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2025-01-05T10:25:00.000Z"
+    },
+    {
+      "id": 69,
+      "userId": 29,
+      "levelId": 3,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-12-25T04:23:00.000Z"
+    },
+    {
+      "id": 38,
+      "userId": 18,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-12-02T08:27:00.000Z"
+    },
+    {
+      "id": 31,
+      "userId": 13,
+      "levelId": 3,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-11-26T10:05:00.000Z"
+    },
+    {
+      "id": 68,
+      "userId": 29,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-11-21T10:25:00.000Z"
+    },
+    {
+      "id": 30,
+      "userId": 13,
+      "levelId": 3,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2024-11-20T04:23:00.000Z"
+    },
+    {
+      "id": 67,
+      "userId": 29,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-10-18T08:27:00.000Z"
+    },
+    {
+      "id": 29,
+      "userId": 13,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-10-17T10:25:00.000Z"
+    },
+    {
+      "id": 28,
+      "userId": 13,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-09-13T08:27:00.000Z"
+    },
+    {
+      "id": 16,
+      "userId": 7,
+      "levelId": 3,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-09-08T08:47:00.000Z"
+    },
+    {
+      "id": 15,
+      "userId": 7,
+      "levelId": 3,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2024-09-02T10:05:00.000Z"
+    },
+    {
+      "id": 14,
+      "userId": 7,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-07-30T08:07:00.000Z"
+    },
+    {
+      "id": 13,
+      "userId": 7,
+      "levelId": 2,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2024-07-24T10:25:00.000Z"
+    },
+    {
+      "id": 57,
+      "userId": 24,
+      "levelId": 3,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-06-22T10:05:00.000Z"
+    },
+    {
+      "id": 12,
+      "userId": 7,
+      "levelId": 1,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-06-20T08:27:00.000Z"
+    },
+    {
+      "id": 56,
+      "userId": 24,
+      "levelId": 3,
+      "score": 3,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2024-06-16T04:23:00.000Z"
+    },
+    {
+      "id": 55,
+      "userId": 24,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-05-13T10:25:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "levelId": 3,
+      "score": 5,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-04-12T10:05:00.000Z"
+    },
+    {
+      "id": 54,
+      "userId": 24,
+      "levelId": 1,
+      "score": 3,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-04-09T08:27:00.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "levelId": 2,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-03-09T08:07:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "levelId": 2,
+      "score": 2,
+      "total": 5,
+      "passed": false,
+      "attemptedAt": "2024-03-03T10:25:00.000Z"
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "levelId": 1,
+      "score": 4,
+      "total": 5,
+      "passed": true,
+      "attemptedAt": "2024-01-29T08:27:00.000Z"
+    }
+  ],
+  "elearning": [
+    {
+      "id": 1,
+      "levelId": 1,
+      "title": "Opening your CAT Passport",
+      "description": "What the passport is, what the Service does for you at Level 1, and how the four levels fit together. Start here.",
+      "videoUrl": "https://www.youtube.com/embed/nhBVL41-_Cw",
+      "duration": "6:12"
+    },
+    {
+      "id": 2,
+      "levelId": 1,
+      "title": "Using Service Basic Lookup",
+      "description": "A walkthrough of the fifty monthly lookups a Level 1 member gets, how the passport wallet stores your results, and where the community forum fits in.",
+      "videoUrl": "https://www.youtube.com/embed/YrxBCBibVo0",
+      "duration": "8:45"
+    },
+    {
+      "id": 3,
+      "levelId": 2,
+      "title": "Bulk Lookup and shared workspaces",
+      "description": "Level 2 members can batch 500 records at a time and pull five people into a workspace. This lesson covers both, plus the etiquette of a shared workspace.",
+      "videoUrl": "https://www.youtube.com/embed/qZXt1Aom3Cs",
+      "duration": "11:30"
+    },
+    {
+      "id": 4,
+      "levelId": 2,
+      "title": "Getting reports to arrive on their own",
+      "description": "Set up scheduled reports, read the weekly digest, and learn which numbers actually predict whether you are ready for the Level 3 exam.",
+      "videoUrl": "https://www.youtube.com/embed/JmzrKUqbJ-A",
+      "duration": "9:04"
+    },
+    {
+      "id": 5,
+      "levelId": 3,
+      "title": "Automations, webhooks and the sandbox",
+      "description": "The Level 3 toolkit: trigger Service actions from your own webhooks and rehearse every change in the sandbox before it touches real data.",
+      "videoUrl": "https://www.youtube.com/embed/wBpEEJ0aA6c",
+      "duration": "14:22"
+    },
+    {
+      "id": 6,
+      "levelId": 3,
+      "title": "The analytics console end to end",
+      "description": "Build a dashboard, export a report, and use the partner directory to find someone who has already solved your problem.",
+      "videoUrl": "https://www.youtube.com/embed/DHjqpvDnNGE",
+      "duration": "12:58"
+    },
+    {
+      "id": 7,
+      "levelId": 4,
+      "title": "Life at the top of the passport",
+      "description": "There is no exam after this one. What the concierge desk can do for you, how custom integrations get scoped, and what happens at the product council.",
+      "videoUrl": "https://www.youtube.com/embed/8SbUC-UaAxE",
+      "duration": "10:16"
+    },
+    {
+      "id": 8,
+      "levelId": 4,
+      "title": "Shaping what ships next",
+      "description": "How Level 4 members read the roadmap, prepare a council proposal, and mentor members coming up through the lower levels.",
+      "videoUrl": "https://www.youtube.com/embed/4deVCNJq3qc",
+      "duration": "13:41"
+    }
+  ],
+  "badges": [
+    {
+      "id": 1,
+      "levelId": 1,
+      "name": "Level 1 Stamp",
+      "description": "Registered and opened the CAT Passport.",
+      "icon": "compass"
+    },
+    {
+      "id": 2,
+      "levelId": 2,
+      "name": "Level 2 Stamp",
+      "description": "Passed the Level 1 exam.",
+      "icon": "plane-takeoff"
+    },
+    {
+      "id": 3,
+      "levelId": 3,
+      "name": "Level 3 Stamp",
+      "description": "Passed the Level 2 exam.",
+      "icon": "navigation"
+    },
+    {
+      "id": 4,
+      "levelId": 4,
+      "name": "Level 4 Gold",
+      "description": "Passed the Level 3 exam — the passport is complete.",
+      "icon": "crown"
+    }
+  ]
+}

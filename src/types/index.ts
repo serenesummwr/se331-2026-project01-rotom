@@ -99,6 +99,17 @@ export interface Badge {
   icon: IconName
 }
 
+export interface MockDatabase {
+  users: User[]
+  levels: Level[]
+  benefits: Benefit[]
+  services: Service[]
+  questions: Question[]
+  examHistory: ExamAttempt[]
+  elearning: ELearningItem[]
+  badges: Badge[]
+}
+
 export type UserEditable = Pick<
   User,
   'firstName' | 'lastName' | 'email' | 'phone' | 'province' | 'bio'
