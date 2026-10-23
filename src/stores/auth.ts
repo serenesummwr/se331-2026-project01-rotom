@@ -69,16 +69,16 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   async function uploadAvatar(file: File): Promise<User> {
-    const stored = tokenStorage.read();
     const userId = currentUser.value?.id;
 
-    if (!stored || userId === undefined) {
+    if (!tokenStorage.read() || userId === undefined) {
       throw new Error("Please sign in before uploading an image.");
     }
 
-    const updatedUser = await profileService.uploadAvatar(file, stored.accessToken);
+    const version = sessionVersion;
+    const updatedUser = await profileService.uploadAvatar(file);
 
-    if (currentUser.value?.id === userId) {
+    if (sessionVersion === version && currentUser.value?.id === userId) {
       currentUser.value = updatedUser;
     }
 
@@ -86,16 +86,16 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   async function updateProfile(values: UserEditable): Promise<User> {
-    const stored = tokenStorage.read();
     const userId = currentUser.value?.id;
 
-    if (!stored || userId === undefined) {
+    if (!tokenStorage.read() || userId === undefined) {
       throw new Error("Please sign in before editing your profile.");
     }
 
-    const updatedUser = await profileService.updateMe(values, stored.accessToken);
+    const version = sessionVersion;
+    const updatedUser = await profileService.updateMe(values);
 
-    if (currentUser.value?.id === userId) {
+    if (sessionVersion === version && currentUser.value?.id === userId) {
       currentUser.value = updatedUser;
     }
 
@@ -103,21 +103,28 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   async function restore(): Promise<void> {
-    const stored = tokenStorage.read();
-
-    if (!stored) {
+    if (!tokenStorage.read()) {
       currentUser.value = null;
       return;
     }
 
+    const version = sessionVersion;
+
     try {
-      currentUser.value = await authService.getMe(stored.accessToken);
+      const user = await authService.getMe();
+
+      if (sessionVersion === version) {
+        currentUser.value = user;
+      }
     } catch (error: unknown) {
       if (
         axios.isAxiosError(error) &&
         (error.response?.status === 401 || error.response?.status === 403)
       ) {
-        clearSession();
+        if (sessionVersion === version) {
+          clearSession();
+        }
+
         return;
       }
 
@@ -126,14 +133,16 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   async function logout(): Promise<void> {
-    const stored = tokenStorage.read();
+    const version = sessionVersion;
 
     try {
-      if (stored) {
-        await authService.logout(stored.accessToken);
+      if (tokenStorage.read()) {
+        await authService.logout();
       }
     } finally {
-      clearSession();
+      if (sessionVersion === version) {
+        clearSession();
+      }
     }
   }
 
