@@ -6,7 +6,9 @@ import { ArrowLeft, UserRound } from "lucide-vue-next";
 import BaseButton from "@/components/shared/BaseButton.vue";
 import { useAuthStore } from "@/stores/auth";
 import { useUserStore } from "@/stores/users";
-import type { UserRegistration } from "@/types";
+import { useForm } from 'vee-validate'
+import { registerSchema } from '@/validation/authSchemas'
+import type { RegisterFormValues } from '@/validation/authSchemas'
 
 interface ApiError {
   message?: string;
@@ -20,18 +22,55 @@ const auth = useAuthStore();
 const userStore = useUserStore();
 const router = useRouter();
 
-const form = reactive<UserRegistration>({
-  username: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  province: userStore.provinceOptions[0] ?? "",
-  bio: "",
-});
+const {
+  errors: validationErrors,
+  defineField,
+  validate,
+  validateField,
+  meta,
+} = useForm<RegisterFormValues>({
+  validationSchema: registerSchema,
+  initialValues: {
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    province: userStore.provinceOptions[0] ?? '',
+    bio: '',
+    password: '',
+    confirmPassword: '',
+  },
+})
 
-const password = ref("");
-const confirmPassword = ref("");
+const fieldOptions = {
+  validateOnModelUpdate: false,
+}
+
+const [username] = defineField('username', fieldOptions)
+const [firstName] = defineField('firstName', fieldOptions)
+const [lastName] = defineField('lastName', fieldOptions)
+const [email] = defineField('email', fieldOptions)
+const [phone] = defineField('phone', fieldOptions)
+const [province] = defineField('province', fieldOptions)
+const [bio] = defineField('bio', fieldOptions)
+
+const [password] = defineField('password', fieldOptions)
+const [confirmPassword] = defineField(
+  'confirmPassword',
+  fieldOptions,
+)
+
+const form = reactive({
+  username,
+  firstName,
+  lastName,
+  email,
+  phone,
+  province,
+  bio,
+})
+
 const loading = ref(false);
 const submitted = ref(false);
 const accountCreated = ref(false);
@@ -68,8 +107,9 @@ const submitLabel = computed(() => {
   return "Create my passport";
 });
 
-function touch(field: string) {
-  touched[field] = true;
+function touch(field: keyof RegisterFormValues) {
+  touched[field] = true
+  void validateField(field)
 }
 
 watch(
@@ -141,85 +181,39 @@ function onAvatarPreviewError() {
 
 onBeforeUnmount(releaseAvatarPreview);
 
-const errors = computed(() => {
-  const found: Record<string, string> = {};
-  const username = form.username.trim();
+const isValid = computed(() => meta.value.valid)
 
-  if (!username) {
-    found.username = "Choose a username";
-  } else if (!/^[a-z0-9._-]{3,32}$/i.test(username)) {
-    found.username = "Use 3–32 letters, numbers, dots, dashes or underscores";
+function errorFor(field: keyof RegisterFormValues) {
+  if (!submitted.value && !touched[field]) {
+    return undefined
   }
 
-  if (!form.firstName.trim()) {
-    found.firstName = "First name is required";
-  } else if (form.firstName.length > 100) {
-    found.firstName = "Use at most 100 characters";
-  }
-
-  if (!form.lastName.trim()) {
-    found.lastName = "Last name is required";
-  } else if (form.lastName.length > 100) {
-    found.lastName = "Use at most 100 characters";
-  }
-
-  if (form.email.length > 254 || !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-    found.email = "Enter a valid email address";
-  }
-
-  if (
-    form.phone.length > 30 ||
-    !/^[\d\s-]+$/.test(form.phone) ||
-    form.phone.replace(/\D/g, "").length !== 10
-  ) {
-    found.phone = "Phone number must contain exactly 10 digits";
-  }
-
-  if (!form.province.trim()) {
-    found.province = "Pick a province";
-  } else if (form.province.length > 100) {
-    found.province = "Use at most 100 characters";
-  }
-
-  if (password.value.length < 6) {
-    found.password = "Use at least 6 characters";
-  } else if (new TextEncoder().encode(password.value).length > 72) {
-    found.password = "Password must not exceed 72 UTF-8 bytes";
-  }
-
-  if (confirmPassword.value !== password.value) {
-    found.confirmPassword = "The passwords do not match";
-  }
-
-  if (form.bio.length > 1000) {
-    found.bio = "Use at most 1000 characters";
-  }
-
-  return found;
-});
-
-const isValid = computed(() => Object.keys(errors.value).length === 0);
-
-function errorFor(field: string) {
-  if (!submitted.value && !touched[field]) return undefined;
-
-  return errors.value[field] ?? serverFieldErrors.value[field];
+  return validationErrors.value[field]
+    ?? serverFieldErrors.value[field]
 }
 
 async function submit() {
-  if (loading.value) return;
+  if (loading.value) return
 
-  submitted.value = true;
-  serverError.value = "";
-  serverFieldErrors.value = {};
+  submitted.value = true
+  serverError.value = ''
+  serverFieldErrors.value = {}
 
-  if (avatarError.value) return;
-  if (!accountCreated.value && !isValid.value) return;
-
-  loading.value = true;
-  avatarUploadFailed.value = false;
+  loading.value = true
 
   try {
+    if (!accountCreated.value) {
+      const result = await validate()
+
+      if (!result.valid || avatarError.value) {
+        return
+      }
+    } else if (avatarError.value) {
+      return
+    }
+
+    avatarUploadFailed.value = false
+
     if (!accountCreated.value) {
       await auth.register({
         username: form.username.trim(),
@@ -230,54 +224,56 @@ async function submit() {
         phone: form.phone,
         province: form.province,
         bio: form.bio.trim(),
-      });
+      })
 
-      accountCreated.value = true;
+      accountCreated.value = true
     }
 
     if (avatarFile.value) {
-      uploadingAvatar.value = true;
+      uploadingAvatar.value = true
 
       try {
-        await auth.uploadAvatar(avatarFile.value);
+        await auth.uploadAvatar(avatarFile.value)
       } catch (cause: unknown) {
         avatarUploadFailed.value = true
+
         const detail = axios.isAxiosError<ApiError>(cause)
           ? cause.response?.data?.message
-          : undefined;
+          : undefined
 
         serverError.value =
-          "Your account was created, but the profile photo could not be uploaded. " +
-          (detail ? `${detail} ` : "") +
-          "Choose a photo and retry, or continue without uploading.";
+          'Your account was created, but the profile photo could not be uploaded. ' +
+          (detail ? `${detail} ` : '') +
+          'Choose a photo and retry, or continue without uploading.'
 
-        return;
+        return
       } finally {
-        uploadingAvatar.value = false;
+        uploadingAvatar.value = false
       }
     }
 
-    await router.replace({ name: auth.homeRoute });
+    await router.replace({ name: auth.homeRoute })
   } catch (cause: unknown) {
     if (accountCreated.value) {
       serverError.value =
-        "Your account was created, but the next page could not be opened. Please try continuing again.";
+        'Your account was created, but the next page could not be opened. Please try continuing again.'
     } else if (axios.isAxiosError<ApiError>(cause)) {
-      const data = cause.response?.data;
+      const data = cause.response?.data
 
       serverError.value = cause.response
-        ? data?.message || "Unable to create your account."
-        : "Unable to connect to the server. If registration was already processed, try signing in before submitting again.";
+        ? data?.message || 'Unable to create your account.'
+        : 'Unable to connect to the server. If registration was already processed, try signing in before submitting again.'
 
       for (const fieldError of data?.fieldErrors ?? []) {
-        serverFieldErrors.value[fieldError.field] = fieldError.message;
+        serverFieldErrors.value[fieldError.field] =
+          fieldError.message
       }
     } else {
       serverError.value =
-        "Unable to complete registration. Please try signing in if your account was created.";
+        'Unable to complete registration. Please try signing in if your account was created.'
     }
   } finally {
-    loading.value = false;
+    loading.value = false
   }
 }
 
@@ -588,7 +584,7 @@ const fieldClass =
           <div class="flex flex-wrap items-center gap-3">
             <BaseButton
               type="submit"
-              :disabled="loading || (!accountCreated && submitted && !isValid)"
+              :disabled="loading"
             >
               {{ submitLabel }}
             </BaseButton>
