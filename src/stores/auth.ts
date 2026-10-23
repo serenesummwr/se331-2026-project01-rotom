@@ -10,6 +10,12 @@ import { profileService } from "@/services/profileService";
 export const useAuthStore = defineStore("auth", () => {
   const currentUser = ref<User | null>(null);
 
+  let sessionVersion = 0;
+
+  function getSessionVersion(): number {
+    return sessionVersion;
+  }
+
   const currentUserId = computed(() => currentUser.value?.id ?? null);
 
   const isAuthenticated = computed(() => currentUser.value !== null);
@@ -26,10 +32,17 @@ export const useAuthStore = defineStore("auth", () => {
       refreshToken: response.refreshToken,
     });
 
+    sessionVersion += 1;
+    currentUser.value = response.user;
+  }
+
+  function acceptRefreshedSession(response: LoginResponse): void {
     currentUser.value = response.user;
   }
 
   function clearSession(): void {
+    sessionVersion += 1;
+
     tokenStorage.clear();
     currentUser.value = null;
 
@@ -100,34 +113,15 @@ export const useAuthStore = defineStore("auth", () => {
     try {
       currentUser.value = await authService.getMe(stored.accessToken);
     } catch (error: unknown) {
-      if (!axios.isAxiosError(error)) throw error;
-
-      const status = error.response?.status;
-
-      if (status === 403) {
+      if (
+        axios.isAxiosError(error) &&
+        (error.response?.status === 401 || error.response?.status === 403)
+      ) {
         clearSession();
         return;
       }
 
-      if (status !== 401) {
-        throw error;
-      }
-
-      try {
-        const response = await authService.refreshToken(stored.refreshToken);
-
-        applySession(response);
-      } catch (refreshError: unknown) {
-        if (
-          axios.isAxiosError(refreshError) &&
-          (refreshError.response?.status === 401 || refreshError.response?.status === 403)
-        ) {
-          clearSession();
-          return;
-        }
-
-        throw refreshError;
-      }
+      throw error;
     }
   }
 
@@ -156,5 +150,8 @@ export const useAuthStore = defineStore("auth", () => {
     restore,
     uploadAvatar,
     updateProfile,
+    getSessionVersion,
+    acceptRefreshedSession,
+    clearSession,
   };
 });
