@@ -5,6 +5,7 @@ import { authService } from '@/services/authService'
 import { tokenStorage } from '@/services/tokenStorage'
 import type { Role, User } from '@/types'
 import type { LoginResponse, RegisterRequest } from '@/types/auth'
+import { profileService } from '@/services/profileService'
 
 export const useAuthStore = defineStore('auth', () => {
   const currentUser = ref<User | null>(null)
@@ -64,6 +65,26 @@ export const useAuthStore = defineStore('auth', () => {
 
   return response.user
   }
+
+  async function uploadAvatar(file: File): Promise<User> {
+  const stored = tokenStorage.read()
+  const userId = currentUser.value?.id
+
+  if (!stored || userId === undefined) {
+    throw new Error('Please sign in before uploading an image.')
+  }
+
+  const updatedUser = await profileService.uploadAvatar(
+    file,
+    stored.accessToken,
+  )
+
+  if (currentUser.value?.id === userId) {
+    currentUser.value = updatedUser
+  }
+
+  return updatedUser
+}
 
   async function restore(): Promise<void> {
     const stored = tokenStorage.read()
@@ -135,5 +156,6 @@ export const useAuthStore = defineStore('auth', () => {
     logout,
     register,
     restore,
+    uploadAvatar,
   }
 })
