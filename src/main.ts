@@ -11,6 +11,7 @@ import "@fontsource-variable/outfit";
 import "nprogress/nprogress.css";
 import "./assets/main.css";
 import { configureApiAuth } from "@/services/api";
+import StartupError from '@/components/shared/StartupError.vue'
 
 async function bootstrap() {
   const app = createApp(App);
@@ -50,4 +51,6 @@ async function bootstrap() {
   app.mount("#app");
 }
 
-void bootstrap().catch((error: unknown) => console.error("Unable to load mock data", error));
+void bootstrap().catch(() => {
+  createApp(StartupError).mount('#app')
+})
