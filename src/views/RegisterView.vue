@@ -1,62 +1,166 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
-import { ArrowLeft } from 'lucide-vue-next'
-import BaseButton from '@/components/shared/BaseButton.vue'
-import { useAuthStore } from '@/stores/auth'
-import { useUserStore } from '@/stores/users'
-import type { UserRegistration } from '@/types'
+import axios from "axios";
+import { computed, reactive, ref, watch } from "vue";
+import { RouterLink, useRouter } from "vue-router";
+import { ArrowLeft } from "lucide-vue-next";
+import BaseButton from "@/components/shared/BaseButton.vue";
+import { useAuthStore } from "@/stores/auth";
+import { useUserStore } from "@/stores/users";
+import type { UserRegistration } from "@/types";
 
-const auth = useAuthStore()
-const userStore = useUserStore()
-const router = useRouter()
+interface ApiError {
+  message?: string;
+  fieldErrors?: {
+    field: string;
+    message: string;
+  }[];
+}
+
+const auth = useAuthStore();
+const userStore = useUserStore();
+const router = useRouter();
+
 const form = reactive<UserRegistration>({
-  username: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  province: userStore.provinceOptions[0] ?? '',
-  bio: '',
-})
-const password = ref('')
-const confirmPassword = ref('')
-const touched = reactive<Record<string, boolean>>({})
-function touch(field: string) {
-  touched[field] = true
-}
-const errors = computed(() => {
-  const found: Record<string, string> = {}
-  const username = form.username.trim()
-  if (!username) found.username = 'Choose a username'
-  else if (!/^[a-z0-9._-]{3,}$/i.test(username))
-    found.username = 'At least 3 characters — letters, numbers, dot, dash or underscore'
-  else if (userStore.isUsernameTaken(username)) found.username = 'That username is already taken'
-  if (!form.firstName.trim()) found.firstName = 'First name is required'
-  if (!form.lastName.trim()) found.lastName = 'Last name is required'
-  if (!/^\S+@\S+\.\S+$/.test(form.email)) found.email = 'Enter a valid email address'
-  if (!/^[\d\s-]+$/.test(form.phone) || form.phone.replace(/\D/g, '').length !== 10)
-    found.phone = 'Phone number must contain exactly 10 digits'
-  if (!form.province) found.province = 'Pick a province'
-  if (password.value.length < 6) found.password = 'Use at least 6 characters'
-  if (confirmPassword.value !== password.value) found.confirmPassword = 'The passwords do not match'
-  return found
-})
-const isValid = computed(() => Object.keys(errors.value).length === 0)
-const submitted = ref(false)
-function errorFor(field: string) {
-  return submitted.value || touched[field] ? errors.value[field] : undefined
-}
-function submit() {
-  submitted.value = true
-  if (!isValid.value) return
-  const user = userStore.register({ ...form })
+  username: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  province: userStore.provinceOptions[0] ?? "",
+  bio: "",
+});
 
-  auth.login(user.username)
-  router.replace({ name: 'user-dashboard' })
+const password = ref("");
+const confirmPassword = ref("");
+const loading = ref(false);
+const submitted = ref(false);
+const serverError = ref("");
+const serverFieldErrors = ref<Record<string, string>>({});
+const touched = reactive<Record<string, boolean>>({});
+
+function touch(field: string) {
+  touched[field] = true;
 }
+
+watch(
+  () => ({ ...form, password: password.value }),
+  () => {
+    serverError.value = "";
+    serverFieldErrors.value = {};
+  },
+);
+
+const errors = computed(() => {
+  const found: Record<string, string> = {};
+  const username = form.username.trim();
+
+  if (!username) {
+    found.username = "Choose a username";
+  } else if (!/^[a-z0-9._-]{3,32}$/i.test(username)) {
+    found.username = "Use 3–32 letters, numbers, dots, dashes or underscores";
+  }
+
+  if (!form.firstName.trim()) {
+    found.firstName = "First name is required";
+  } else if (form.firstName.length > 100) {
+    found.firstName = "Use at most 100 characters";
+  }
+
+  if (!form.lastName.trim()) {
+    found.lastName = "Last name is required";
+  } else if (form.lastName.length > 100) {
+    found.lastName = "Use at most 100 characters";
+  }
+
+  if (form.email.length > 254 || !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+    found.email = "Enter a valid email address";
+  }
+
+  if (
+    form.phone.length > 30 ||
+    !/^[\d\s-]+$/.test(form.phone) ||
+    form.phone.replace(/\D/g, "").length !== 10
+  ) {
+    found.phone = "Phone number must contain exactly 10 digits";
+  }
+
+  if (!form.province.trim()) {
+    found.province = "Pick a province";
+  } else if (form.province.length > 100) {
+    found.province = "Use at most 100 characters";
+  }
+
+  if (password.value.length < 6) {
+    found.password = "Use at least 6 characters";
+  } else if (new TextEncoder().encode(password.value).length > 72) {
+    found.password = "Password must not exceed 72 UTF-8 bytes";
+  }
+
+  if (confirmPassword.value !== password.value) {
+    found.confirmPassword = "The passwords do not match";
+  }
+
+  if (form.bio.length > 1000) {
+    found.bio = "Use at most 1000 characters";
+  }
+
+  return found;
+});
+
+const isValid = computed(() => Object.keys(errors.value).length === 0);
+
+function errorFor(field: string) {
+  if (!submitted.value && !touched[field]) return undefined;
+
+  return errors.value[field] ?? serverFieldErrors.value[field];
+}
+
+async function submit() {
+  if (loading.value) return;
+
+  submitted.value = true;
+  serverError.value = "";
+  serverFieldErrors.value = {};
+
+  if (!isValid.value) return;
+
+  loading.value = true;
+
+  try {
+    await auth.register({
+      username: form.username.trim(),
+      password: password.value,
+      firstName: form.firstName.trim(),
+      lastName: form.lastName.trim(),
+      email: form.email.trim(),
+      phone: form.phone,
+      province: form.province,
+      bio: form.bio.trim(),
+    });
+
+    await router.replace({ name: auth.homeRoute });
+  } catch (cause: unknown) {
+    if (axios.isAxiosError<ApiError>(cause)) {
+      const data = cause.response?.data;
+
+      serverError.value = cause.response
+        ? data?.message || "Unable to create your account."
+        : "Unable to connect to the server. Please try again.";
+
+      for (const fieldError of data?.fieldErrors ?? []) {
+        serverFieldErrors.value[fieldError.field] = fieldError.message;
+      }
+    } else {
+      serverError.value =
+        "Unable to complete registration. Please try signing in if your account was created.";
+    }
+  } finally {
+    loading.value = false;
+  }
+}
+
 const fieldClass =
-  'w-full rounded-lg border border-border-strong bg-muted/70 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none'
+  "w-full rounded-lg border border-border-strong bg-muted/70 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none";
 </script>
 <template>
   <div class="min-h-dvh">
@@ -88,7 +192,7 @@ const fieldClass =
                 @blur="touch('username')"
               />
               <span v-if="errorFor('username')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('username') }}
+                {{ errorFor("username") }}
               </span>
             </label>
             <label class="block">
@@ -102,7 +206,7 @@ const fieldClass =
                 @blur="touch('firstName')"
               />
               <span v-if="errorFor('firstName')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('firstName') }}
+                {{ errorFor("firstName") }}
               </span>
             </label>
             <label class="block">
@@ -116,7 +220,7 @@ const fieldClass =
                 @blur="touch('lastName')"
               />
               <span v-if="errorFor('lastName')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('lastName') }}
+                {{ errorFor("lastName") }}
               </span>
             </label>
             <label class="block">
@@ -131,7 +235,7 @@ const fieldClass =
                 @blur="touch('email')"
               />
               <span v-if="errorFor('email')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('email') }}
+                {{ errorFor("email") }}
               </span>
             </label>
             <label class="block">
@@ -147,7 +251,7 @@ const fieldClass =
                 @blur="touch('phone')"
               />
               <span v-if="errorFor('phone')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('phone') }}
+                {{ errorFor("phone") }}
               </span>
             </label>
             <label class="block sm:col-span-2">
@@ -163,6 +267,9 @@ const fieldClass =
                   {{ province }}
                 </option>
               </select>
+              <span v-if="errorFor('province')" class="text-danger mt-1 block text-xs">
+                {{ errorFor("province") }}
+              </span>
             </label>
             <label class="block">
               <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase">
@@ -176,7 +283,7 @@ const fieldClass =
                 @blur="touch('password')"
               />
               <span v-if="errorFor('password')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('password') }}
+                {{ errorFor("password") }}
               </span>
             </label>
             <label class="block">
@@ -191,7 +298,7 @@ const fieldClass =
                 @blur="touch('confirmPassword')"
               />
               <span v-if="errorFor('confirmPassword')" class="text-danger mt-1 block text-xs">
-                {{ errorFor('confirmPassword') }}
+                {{ errorFor("confirmPassword") }}
               </span>
             </label>
             <label class="block sm:col-span-2">
@@ -204,15 +311,21 @@ const fieldClass =
                 :class="fieldClass"
                 placeholder="What brings you to the Service?"
               />
+              <span v-if="errorFor('bio')" class="text-danger mt-1 block text-xs">
+                {{ errorFor("bio") }}
+              </span>
             </label>
           </div>
-          <p class="text-muted-foreground text-xs leading-relaxed">
-            This is a demo, so your account is only kept until you refresh the page. When you sign
-            in, use the username you chose—any password will work.
+          <p
+            v-if="serverError"
+            role="alert"
+            class="rounded-lg bg-danger/10 px-3 py-2 text-xs text-danger"
+          >
+            {{ serverError }}
           </p>
           <div class="flex flex-wrap items-center gap-3">
-            <BaseButton type="submit" :disabled="submitted && !isValid">
-              Create my passport
+            <BaseButton type="submit" :disabled="loading || (submitted && !isValid)">
+              {{ loading ? "Creating account…" : "Create my passport" }}
             </BaseButton>
             <span v-if="submitted && !isValid" class="text-muted-foreground text-xs">
               Fix the highlighted fields to continue.

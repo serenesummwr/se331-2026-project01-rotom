@@ -1,54 +1,139 @@
+import axios from 'axios'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { useUserStore } from './users'
+import { authService } from '@/services/authService'
+import { tokenStorage } from '@/services/tokenStorage'
 import type { Role, User } from '@/types'
-const STORAGE_KEY = 'catpassport.session'
+import type { LoginResponse, RegisterRequest } from '@/types/auth'
 
 export const useAuthStore = defineStore('auth', () => {
-  const currentUserId = ref<number | null>(null)
-  const userStore = useUserStore()
-  const currentUser = computed<User | null>(() =>
-    currentUserId.value === null ? null : (userStore.byId(currentUserId.value) ?? null),
+  const currentUser = ref<User | null>(null)
+
+  const currentUserId = computed(
+    () => currentUser.value?.id ?? null,
   )
-  const isAuthenticated = computed(() => currentUser.value !== null)
-  const role = computed<Role | null>(() => currentUser.value?.role ?? null)
+
+  const isAuthenticated = computed(
+    () => currentUser.value !== null,
+  )
+
+  const role = computed<Role | null>(
+    () => currentUser.value?.role ?? null,
+  )
+
   const isAdmin = computed(() => role.value === 'admin')
-  const homeRoute = computed(() => (isAdmin.value ? 'admin-dashboard' : 'user-dashboard'))
 
-  function login(username: string, _password?: string): User | null {
-    const user = userStore.byUsername(username.trim())
-    if (!user) return null
-    currentUserId.value = user.id
-    persist()
-    return user
-  }
-  function logout() {
-    currentUserId.value = null
-    persist()
-  }
-  function persist() {
-    if (typeof sessionStorage === 'undefined') return
-    if (currentUserId.value === null) sessionStorage.removeItem(STORAGE_KEY)
-    else sessionStorage.setItem(STORAGE_KEY, String(currentUserId.value))
+  const homeRoute = computed(() =>
+    isAdmin.value ? 'admin-dashboard' : 'user-dashboard',
+  )
+
+  function applySession(response: LoginResponse): void {
+    tokenStorage.write({
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
+    })
+
+    currentUser.value = response.user
   }
 
-  function restore() {
-    if (typeof sessionStorage === 'undefined') return
-    const stored = sessionStorage.getItem(STORAGE_KEY)
-    if (!stored) return
-    const id = Number(stored)
-    if (userStore.byId(id)) currentUserId.value = id
-    else sessionStorage.removeItem(STORAGE_KEY)
+  function clearSession(): void {
+    tokenStorage.clear()
+    currentUser.value = null
+
+    sessionStorage.removeItem('catpassport.session')
   }
+
+  async function login(
+    username: string,
+    password: string,
+  ): Promise<User> {
+    const response = await authService.login({
+      username: username.trim(),
+      password,
+    })
+
+    applySession(response)
+
+    return response.user
+  }
+
+  async function register(request: RegisterRequest): Promise<User> {
+  const response = await authService.register(request)
+
+  applySession(response)
+
+  return response.user
+  }
+
+  async function restore(): Promise<void> {
+    const stored = tokenStorage.read()
+
+    if (!stored) {
+      currentUser.value = null
+      return
+    }
+
+    try {
+      currentUser.value = await authService.getMe(
+        stored.accessToken,
+      )
+    } catch (error: unknown) {
+      if (!axios.isAxiosError(error)) throw error
+
+      const status = error.response?.status
+
+      if (status === 403) {
+        clearSession()
+        return
+      }
+
+      if (status !== 401) {
+        throw error
+      }
+
+      try {
+        const response = await authService.refreshToken(
+          stored.refreshToken,
+        )
+
+        applySession(response)
+      } catch (refreshError: unknown) {
+        if (
+          axios.isAxiosError(refreshError) &&
+          (refreshError.response?.status === 401 ||
+            refreshError.response?.status === 403)
+        ) {
+          clearSession()
+          return
+        }
+
+        throw refreshError
+      }
+    }
+  }
+
+  async function logout(): Promise<void> {
+    const stored = tokenStorage.read()
+
+    try {
+      if (stored) {
+        await authService.logout(stored.accessToken)
+      }
+    } finally {
+      clearSession()
+    }
+  }
+
   return {
-    currentUserId,
     currentUser,
+    currentUserId,
     isAuthenticated,
     role,
     isAdmin,
     homeRoute,
     login,
     logout,
+    register,
     restore,
   }
 })

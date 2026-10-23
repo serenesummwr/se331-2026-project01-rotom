@@ -20,7 +20,7 @@ async function bootstrap() {
   useUserStore(pinia).hydrate(database.users)
   useLevelStore(pinia).hydrate(database)
   useExamStore(pinia).hydrate(database)
-  useAuthStore(pinia).restore()
+  await useAuthStore(pinia).restore()
 
   app.use(router)
   app.mount('#app')

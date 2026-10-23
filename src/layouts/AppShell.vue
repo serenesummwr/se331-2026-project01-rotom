@@ -31,9 +31,16 @@ watch(
   () => route.fullPath,
   () => (navOpen.value = false),
 )
-function logout() {
-  auth.logout()
-  router.push({ name: 'landing' })
+async function logout() {
+  try {
+    await auth.logout()
+  } catch {
+    window.alert(
+      'Signed out on this browser, but the server could not confirm logout.',
+    )
+  } finally {
+    await router.replace({ name: 'login' })
+  }
 }
 </script>
 <template>
