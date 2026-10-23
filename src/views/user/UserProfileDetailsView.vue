@@ -5,6 +5,7 @@ import BaseCard from '@/components/shared/BaseCard.vue'
 import BaseButton from '@/components/shared/BaseButton.vue'
 import UserInfo from '@/components/shared/UserInfo.vue'
 import UserEditForm from '@/components/shared/UserEditForm.vue'
+import ProfileAvatarEditor from '@/components/shared/ProfileAvatarEditor.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useUserStore } from '@/stores/users'
 import { useLevelStore } from '@/stores/levels'
@@ -24,9 +25,14 @@ const levelStore = useLevelStore()
 
 const editing = ref(false)
 const saving = ref(false)
+const uploadingPhoto = ref(false)
 const saved = ref(false)
 const error = ref('')
 const fieldErrors = ref<string[]>([])
+
+const busy = computed(
+  () => saving.value || uploadingPhoto.value,
+)
 
 const levelName = computed(() =>
   auth.currentUser
@@ -42,7 +48,7 @@ function startEditing() {
 }
 
 function cancelEditing() {
-  if (saving.value) return
+  if (busy.value) return
 
   editing.value = false
   error.value = ''
@@ -50,7 +56,7 @@ function cancelEditing() {
 }
 
 async function save(values: UserEditable) {
-  if (!auth.currentUser || saving.value) return
+  if (!auth.currentUser || busy.value) return
 
   saving.value = true
   saved.value = false
@@ -85,10 +91,10 @@ async function save(values: UserEditable) {
 <template>
   <BaseCard
     v-if="auth.currentUser"
-    :title="editing ? 'Edit my details' : 'My details'"
+    :title="editing ? 'Edit profile' : 'My details'"
     :subtitle="
       editing
-        ? 'Keep your contact information up to date.'
+        ? 'Update your photo and personal information.'
         : 'Your personal and contact information.'
     "
   >
@@ -99,7 +105,7 @@ async function save(values: UserEditable) {
         variant="secondary"
         @click="startEditing"
       >
-        Edit details
+        Edit profile
       </BaseButton>
     </template>
 
@@ -122,20 +128,29 @@ async function save(values: UserEditable) {
         v-if="fieldErrors.length"
         class="mt-2 list-disc space-y-1 pl-5 text-xs"
       >
-        <li v-for="message in fieldErrors" :key="message">
+        <li
+          v-for="message in fieldErrors"
+          :key="message"
+        >
           {{ message }}
         </li>
       </ul>
     </div>
 
-    <UserEditForm
-      v-if="editing"
-      :user="auth.currentUser"
-      :provinces="userStore.provinceOptions"
-      :saving="saving"
-      @save="save"
-      @cancel="cancelEditing"
-    />
+    <template v-if="editing">
+      <ProfileAvatarEditor
+        :disabled="saving"
+        @uploading="uploadingPhoto = $event"
+      />
+
+      <UserEditForm
+        :user="auth.currentUser"
+        :provinces="userStore.provinceOptions"
+        :saving="busy"
+        @save="save"
+        @cancel="cancelEditing"
+      />
+    </template>
 
     <UserInfo
       v-else
