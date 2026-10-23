@@ -5,49 +5,72 @@ import { RouterLink, useRoute, useRouter } from "vue-router";
 import { ArrowLeft } from "lucide-vue-next";
 import { useAuthStore } from "@/stores/auth";
 import BaseButton from "@/components/shared/BaseButton.vue";
+import { useForm } from "vee-validate";
+import { loginSchema } from "@/validation/authSchemas";
 
 const auth = useAuthStore();
 const router = useRouter();
 const route = useRoute();
 
-const username = ref("");
-const password = ref("");
 const error = ref("");
-const loading = ref(false);
 
-async function submit() {
+const {
+  errors,
+  defineField,
+  handleSubmit,
+  isSubmitting: loading,
+} = useForm<{
+  username: string;
+  password: string;
+}>({
+  validationSchema: loginSchema,
+  initialValues: {
+    username: "",
+    password: "",
+  },
+});
+
+const [username, usernameAttrs] = defineField("username", {
+  validateOnModelUpdate: false,
+});
+
+const [password, passwordAttrs] = defineField("password", {
+  validateOnModelUpdate: false,
+});
+
+const validatedSubmit = handleSubmit(
+  async (values) => {
+    error.value = "";
+
+    try {
+      await auth.login(values.username, values.password);
+
+      const redirect = route.query.redirect;
+
+      if (typeof redirect === "string" && redirect.startsWith("/") && !redirect.startsWith("//")) {
+        await router.replace(redirect);
+      } else {
+        await router.replace({ name: auth.homeRoute });
+      }
+    } catch (cause: unknown) {
+      if (axios.isAxiosError<{ message?: string }>(cause)) {
+        error.value = cause.response
+          ? cause.response.data?.message || "Unable to sign in."
+          : "Unable to connect to the server. Please try again.";
+      } else {
+        error.value = "Unable to complete sign in. Please try again.";
+      }
+    }
+  },
+  () => {
+    error.value = "";
+  },
+);
+
+function submit(event: Event) {
   if (loading.value) return;
 
-  error.value = "";
-
-  if (!username.value.trim() || !password.value) {
-    error.value = "Please enter your username and password.";
-    return;
-  }
-
-  loading.value = true;
-
-  try {
-    await auth.login(username.value, password.value);
-
-    const redirect = route.query.redirect;
-
-    if (typeof redirect === "string" && redirect.startsWith("/") && !redirect.startsWith("//")) {
-      await router.replace(redirect);
-    } else {
-      await router.replace({ name: auth.homeRoute });
-    }
-  } catch (cause: unknown) {
-    if (axios.isAxiosError<{ message?: string }>(cause)) {
-      error.value = cause.response
-        ? cause.response.data?.message || "Unable to sign in."
-        : "Unable to connect to the server. Please try again.";
-    } else {
-      error.value = "Unable to complete sign in. Please try again.";
-    }
-  } finally {
-    loading.value = false;
-  }
+  void validatedSubmit(event);
 }
 
 const fieldClass =
@@ -88,11 +111,18 @@ const fieldClass =
             >
             <input
               v-model="username"
+              v-bind="usernameAttrs"
               :class="fieldClass"
+              :disabled="loading"
+              :aria-invalid="Boolean(errors.username)"
+              :aria-describedby="errors.username ? 'username-error' : undefined"
               placeholder="Enter your username"
               autocomplete="username"
               autofocus
             />
+            <span v-if="errors.username" id="username-error" class="text-danger mt-1 block text-xs">
+              {{ errors.username }}
+            </span>
           </label>
           <label class="block">
             <span class="text-muted-foreground mb-1.5 block text-xs tracking-wide uppercase"
@@ -100,11 +130,19 @@ const fieldClass =
             >
             <input
               v-model="password"
+              v-bind="passwordAttrs"
               type="password"
               :class="fieldClass"
+              :disabled="loading"
+              :aria-invalid="Boolean(errors.password)"
+              :aria-describedby="errors.password ? 'password-error' : undefined"
               placeholder="Enter your password"
               autocomplete="current-password"
             />
+
+            <span v-if="errors.password" id="password-error" class="text-danger mt-1 block text-xs">
+              {{ errors.password }}
+            </span>
           </label>
           <p v-if="error" class="rounded-lg bg-danger/10 px-3 py-2 text-xs text-danger">
             {{ error }}
