@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed, reactive, watch } from 'vue'
-import BaseButton from './BaseButton.vue'
-import type { User, UserEditable } from '@/types'
+import { computed, reactive, watch } from "vue";
+import BaseButton from "./BaseButton.vue";
+import type { User, UserEditable } from "@/types";
 
 const props = defineProps<{
-  user: User
-  provinces: string[]
-  saving?: boolean
-}>()
+  user: User;
+  provinces: string[];
+  saving?: boolean;
+}>();
 const emit = defineEmits<{
-  save: [values: UserEditable]
-  cancel: []
-}>()
-const form = reactive<UserEditable>(pick(props.user))
+  save: [values: UserEditable];
+  cancel: [];
+}>();
+const form = reactive<UserEditable>(pick(props.user));
 function pick(user: User): UserEditable {
   return {
     firstName: user.firstName,
@@ -21,29 +21,29 @@ function pick(user: User): UserEditable {
     phone: user.phone,
     province: user.province,
     bio: user.bio,
-  }
+  };
 }
 
 watch(
   () => props.user.id,
   () => Object.assign(form, pick(props.user)),
-)
+);
 const errors = computed(() => {
-  const found: Partial<Record<keyof UserEditable, string>> = {}
-  if (!form.firstName.trim()) found.firstName = 'First name is required'
-  if (!form.lastName.trim()) found.lastName = 'Last name is required'
-  if (!/^\S+@\S+\.\S+$/.test(form.email)) found.email = 'Enter a valid email address'
-  if (!/^[\d\s-]+$/.test(form.phone) || form.phone.replace(/\D/g, '').length !== 10)
-    found.phone = 'Phone number must contain exactly 10 digits'
-  return found
-})
-const isValid = computed(() => Object.keys(errors.value).length === 0)
+  const found: Partial<Record<keyof UserEditable, string>> = {};
+  if (!form.firstName.trim()) found.firstName = "First name is required";
+  if (!form.lastName.trim()) found.lastName = "Last name is required";
+  if (!/^\S+@\S+\.\S+$/.test(form.email)) found.email = "Enter a valid email address";
+  if (!/^[\d\s-]+$/.test(form.phone) || form.phone.replace(/\D/g, "").length !== 10)
+    found.phone = "Phone number must contain exactly 10 digits";
+  return found;
+});
+const isValid = computed(() => Object.keys(errors.value).length === 0);
 function onSubmit() {
-  if (!isValid.value) return
-  emit('save', { ...form })
+  if (!isValid.value || props.saving) return;
+  emit("save", { ...form });
 }
 const fieldClass =
-  'w-full rounded-lg border border-border-strong bg-muted/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none'
+  "w-full rounded-lg border border-border-strong bg-muted/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none";
 </script>
 <template>
   <form class="space-y-5" novalidate @submit.prevent="onSubmit">
@@ -105,9 +105,11 @@ const fieldClass =
     </div>
     <div class="flex flex-wrap items-center gap-3">
       <BaseButton type="submit" :disabled="!isValid || saving">
-        {{ saving ? 'Saving…' : 'Save changes' }}
+        {{ saving ? "Saving…" : "Save changes" }}
       </BaseButton>
-      <BaseButton type="button" variant="ghost" @click="emit('cancel')">Cancel</BaseButton>
+      <BaseButton type="button" variant="ghost" :disabled="saving" @click="emit('cancel')">
+        Cancel
+      </BaseButton>
       <span v-if="!isValid" class="text-muted-foreground text-xs">
         Fix the highlighted fields to enable saving.
       </span>
